@@ -1,0 +1,2 @@
+# xiaoxing_mvp_arms_template
+基于MvpArms框架开发一个快速开发Androd的模板
