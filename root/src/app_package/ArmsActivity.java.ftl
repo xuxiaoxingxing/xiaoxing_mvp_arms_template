@@ -13,7 +13,6 @@ import ${componentPackageName}.Dagger${pageName}Component;
 import ${moudlePackageName}.${pageName}Module;
 import ${contractPackageName}.${pageName}Contract;
 import ${presenterPackageName}.${pageName}Presenter;
-import ${adapterPackageName}.${pageName}Adapter;
 
 import ${packageName}.R;
 
@@ -38,9 +37,12 @@ import me.jessyan.armscomponent.commonsdk.core.RouterHub;
     import android.support.v7.widget.GridLayoutManager;
     import android.support.v7.widget.LinearLayoutManager;
     import android.support.v7.widget.RecyclerView;
+
+    import ${adapterPackageName}.${pageName}Adapter;
+
 </#if>
 
-@Route(path = RouterHub.${pageName}_ACTIVITY)
+@Route(path = RouterHub.XIAO_XING_SETTING_GONG_NENG_SHEN_QING_ACTIVITY_ACTIVITY)
 public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>{
 
     <#if needHeadRightButton>
