@@ -66,7 +66,7 @@
 
 
 
-<#elseif >
+<#else >
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               xmlns:tools="http://schemas.android.com/tools"
