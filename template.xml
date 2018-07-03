@@ -63,6 +63,26 @@
         help="Activity是否是一个Tab选项 ？ 不勾选则不生成" />
 
     <parameter
+        id="activityName"
+        name="Activity Name"
+        type="string"
+        constraints="nonempty"
+        suggest="default_title"
+        default="默认标题"
+        visibility="needActivity"
+        help="Activity 标题" />
+
+    <parameter
+        id="activityRightButtonName"
+        name="Activity Head Right Button Name"
+        type="string"
+        constraints="nonempty"
+        suggest="default_right_button_name"
+        default="头部右侧按钮文字"
+        visibility="needHeadRightButton"
+        help="Activity 头部右侧按钮文字" />
+
+    <parameter
         id="activityLayoutName"
         name="Activity Layout Name"
         type="string"

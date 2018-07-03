@@ -88,10 +88,10 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     public void initData(@Nullable Bundle savedInstanceState) {
 
     <#if needHeadRightButton>
-        ToolbarUtils.initToolbarTitleBackWithRightButton(this, "修改ID", mRightListener);
-        mBtnRight.setText(R.string.xiaoxing_setting_wan_cheng);
+        ToolbarUtils.initToolbarTitleBackWithRightButton(this, "${activityName}", mRightListener);
+        mBtnRight.setText(${activityRightButtonName});
     <#elseif needActivity>
-        ToolbarUtils.initToolbarTitleBack(this, "");
+        ToolbarUtils.initToolbarTitleBack(this, "${activityName}");
     </#if>
 
     <#if isListActivity>
