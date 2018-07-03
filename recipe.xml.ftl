@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 <recipe>
-<#if needActivity>
+<!-- <#if needActivity>
     <merge from="root/AndroidManifest.xml.ftl"
            to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
+</#if> -->
+<#if needActivity>
+    <merge from="root/AndroidManifest.xml.ftl"
+           to="app/src/main/sales/AndroidManifest.xml" />
 </#if>
 
 <#if needActivity && generateActivityLayout>

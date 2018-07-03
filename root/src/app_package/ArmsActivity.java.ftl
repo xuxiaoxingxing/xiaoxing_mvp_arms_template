@@ -42,7 +42,7 @@ import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 
 </#if>
 
-@Route(path = RouterHub.SALES_CLIENT_GUAN_YU_ACTIVITY)
+@Route(path = RouterHub.${pageName}_ACTIVITY)
 public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>{
 
     <#if needHeadRightButton>
