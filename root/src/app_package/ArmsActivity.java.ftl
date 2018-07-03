@@ -42,7 +42,7 @@ import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 
 </#if>
 
-@Route(path = RouterHub.XIAO_XING_SETTING_GONG_NENG_SHEN_QING_ACTIVITY_ACTIVITY)
+@Route(path = RouterHub.XIAO_XING_SETTING_GONG_NENG_SHEN_QING_ACTIVITY)
 public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>{
 
     <#if needHeadRightButton>
