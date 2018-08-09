@@ -118,15 +118,15 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         }
 
         private void initRecyclerView() {
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(HuoDongHuaXuActivity.this));
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(HuoDongHuaXuActivity.this, VERTICAL));
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(${pageName}Activity.this));
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(${pageName}Activity.this, VERTICAL));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-            mRecyclerView.setAdapter(mAdapter = new HuoDongHuaXuAdapter(HuoDongHuaXuActivity.this, loadModels()));
+            mRecyclerView.setAdapter(mAdapter = new ${pageName}Adapter(${pageName}Activity.this, loadModels()));
 
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    Utils.navigation(HuoDongHuaXuActivity.this, RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
+                    Utils.navigation(${pageName}Activity.this, RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
                 }
             });
         }

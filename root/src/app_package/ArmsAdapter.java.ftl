@@ -12,8 +12,12 @@ import ${packageName}.R;
 
 
 public class ${pageName}Adapter extends BaseQuickAdapter<${pageName}, BaseViewHolder> {
-    public ${pageName}Adapter(@Nullable List<${pageName}> data) {
+	
+	private Context mContext;
+
+    public ${pageName}Adapter(Context context,@Nullable List<${pageName}> data) {
         super(R.layout.${adapterLayoutName}, data);
+        this.mContext = context;
     }
 
     @Override
