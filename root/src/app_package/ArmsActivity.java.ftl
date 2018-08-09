@@ -61,12 +61,21 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
 
     <#if isListActivity>
-        private RecyclerView mRecyclerView;
-        private RefreshLayout mRefreshLayout;
-        private ${pageName}Adapter mAdapter;
+  
+    private ${pageName}Adapter mAdapter;
 
-        private View mEmptyLayout;
-        private static boolean mIsNeedDemo = true;
+    @BindView(R2.id.empty_text)
+    TextView empty_text;
+    @BindView(R2.id.empty_image)
+    ImageView empty_image;
+
+    @BindView(R2.id.empty)
+    View mEmptyLayout;
+    @BindView(R2.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R2.id.refreshLayout)
+    RefreshLayout mRefreshLayout;
+    private static boolean mIsNeedDemo = true;
     </#if>
 
     @Override
@@ -95,73 +104,46 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     </#if>
 
     <#if isListActivity>
-     mRefreshLayout = findViewById(R.id.refreshLayout);
-            mRefreshLayout.setRefreshHeader(new ClassicsHeader(this).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
-            mRefreshLayout.setOnRefreshListener(this);
-
-            mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-            mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-            mRecyclerView.addItemDecoration(new DividerItemDecoration(this, VERTICAL));
-
-            mEmptyLayout = findViewById(R.id.empty);
-
-            ImageView image = (ImageView) findViewById(R.id.empty_image);
-            image.setImageResource(R.drawable.ic_empty);
-
-            TextView empty = (TextView) findViewById(R.id.empty_text);
-            empty.setText("暂无数据下拉刷新");
-
-            /*主动演示刷新*/
-            if (mIsNeedDemo) {
-                mRefreshLayout.getLayout().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (mIsNeedDemo) {
-                            mRefreshLayout.autoRefresh();
-                        }
-                    }
-                }, 3000);
-                mRefreshLayout.setOnMultiPurposeListener(new SimpleMultiPurposeListener() {
-                    @Override
-                    public void onStateChanged(@NonNull RefreshLayout refreshLayout, @NonNull RefreshState oldState, @NonNull RefreshState newState) {
-                        mIsNeedDemo = false;
-                    }
-                });
-            }
-            mRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-                @Override
-                public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                    mRefreshLayout.finishLoadMore();
-                }
-            });
+        initRefreshLayout();
+        initRecyclerView();
+        initEmpty();
     </#if>
 
 
     }
     <#if isListActivity>
-      @Override
-        public void onRefresh(@NonNull RefreshLayout refreshLayout) {
-            mRefreshLayout.getLayout().postDelayed(new Runnable() {
-                @Override
-                public void run() {
+        private void initEmpty() {
+            empty_image.setImageResource(R.drawable.ic_empty);
+            empty_text.setText("暫無數據下拉刷新");
+        }
 
-    //                mRecyclerView.setLayoutManager(new LinearLayoutManager(${pageName}Activity.this));
-                    mRecyclerView.addItemDecoration(new DividerItemDecoration(${pageName}Activity.this, VERTICAL));
-                    mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                    mRecyclerView.setAdapter(mAdapter = new ${pageName}Adapter(loadModels()));
-                    //                mRecyclerView.setAdapter(new BaseRecyclerAdapter<Item>(Arrays.asList(Item.values()), simple_list_item_2, FragmentOrderList.this) {
-                    //                    @Override
-                    //                    protected void onBindViewHolder(SmartViewHolder holder, Item model, int position) {
-                    //                        holder.text(android.R.id.text1, model.name());
-                    ////                        holder.text(android.R.id.text2, model.name);
-                    ////                        holder.textColorId(android.R.id.text2, R.color.colorTextAssistant);
-                    //                    }
-                    //                });
-                    mRefreshLayout.finishRefresh();
-                    mEmptyLayout.setVisibility(View.GONE);
+        private void initRecyclerView() {
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(HuoDongHuaXuActivity.this));
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(HuoDongHuaXuActivity.this, VERTICAL));
+            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mRecyclerView.setAdapter(mAdapter = new HuoDongHuaXuAdapter(HuoDongHuaXuActivity.this, loadModels()));
+
+            mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    Utils.navigation(HuoDongHuaXuActivity.this, RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
                 }
-            }, 2000);
+            });
+        }
+
+        private void initRefreshLayout() {
+            mRefreshLayout.setRefreshHeader(new ClassicsHeader(this).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
+            mRefreshLayout.setOnRefreshListener(this);
+            mRefreshLayout.autoRefresh();
+            mRefreshLayout.setEnableLoadMore(false);
+        }
+
+        @Override
+        public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+
+            mRefreshLayout.finishRefresh();
+            mEmptyLayout.setVisibility(View.GONE);
+
         }
 
         /**
@@ -179,6 +161,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
             return addressLists;
         }
+
     </#if>
 
     @Override
