@@ -114,6 +114,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     <#if isListActivity>
         private void initEmpty() {
             empty_image.setImageResource(R.drawable.ic_empty);
+            empty_text.setTextColor(getResources().getColor(R.color.public_white));
             empty_text.setText("暫無數據下拉刷新");
         }
 
