@@ -1,7 +1,7 @@
 package ${adapterPackageName};
 
 import android.support.annotation.Nullable;
-
+import android.content.Context;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import ${packageName}.mvp.ui.entity.${pageName};

@@ -23,8 +23,45 @@ import ${packageName}.R;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
+<#if isListActivity>
+    import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}Contract.View{
+    import com.scwang.smartrefresh.layout.api.RefreshLayout;
+    import com.scwang.smartrefresh.layout.constant.RefreshState;
+    import com.scwang.smartrefresh.layout.constant.SpinnerStyle;
+    import com.scwang.smartrefresh.layout.header.ClassicsHeader;
+    import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+    import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+    import com.scwang.smartrefresh.layout.listener.SimpleMultiPurposeListener;
+    import android.support.v7.widget.DefaultItemAnimator;
+    import android.support.v7.widget.DividerItemDecoration;
+    import android.support.v7.widget.GridLayoutManager;
+    import android.support.v7.widget.LinearLayoutManager;
+    import android.support.v7.widget.RecyclerView;
+
+    import ${adapterPackageName}.${pageName}Adapter;
+
+</#if>
+
+public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}Contract.View <#if isListActivity>, OnRefreshListener</#if>{
+
+    <#if isListActivity>
+  
+    private ${pageName}Adapter mAdapter;
+
+    @BindView(R2.id.empty_text)
+    TextView empty_text;
+    @BindView(R2.id.empty_image)
+    ImageView empty_image;
+
+    @BindView(R2.id.empty)
+    View mEmptyLayout;
+    @BindView(R2.id.recyclerView)
+    RecyclerView mRecyclerView;
+    @BindView(R2.id.refreshLayout)
+    RefreshLayout mRefreshLayout;
+    private static boolean mIsNeedDemo = true;
+    </#if>
 
     public static ${pageName}Fragment newInstance() {
         ${pageName}Fragment fragment = new ${pageName}Fragment();
@@ -49,8 +86,66 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
+        <#if isListActivity>
+            initRefreshLayout();
+            initRecyclerView();
+            initEmpty();
+        </#if>
     }
 
+    <#if isListActivity>
+        private void initEmpty() {
+            empty_image.setImageResource(R.drawable.ic_empty);
+            empty_text.setTextColor(getResources().getColor(R.color.public_white));
+            empty_text.setText("暫無數據下拉刷新");
+        }
+
+        private void initRecyclerView() {
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+            mRecyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), VERTICAL));
+            mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+            mRecyclerView.setAdapter(mAdapter = new ${pageName}Adapter(getActivity(), loadModels()));
+
+            mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                    Utils.navigation(getActivity(), RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
+                }
+            });
+        }
+
+        private void initRefreshLayout() {
+            mRefreshLayout.setRefreshHeader(new ClassicsHeader(getActivity()).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
+            mRefreshLayout.setOnRefreshListener(this);
+            mRefreshLayout.autoRefresh();
+            mRefreshLayout.setEnableLoadMore(false);
+        }
+
+        @Override
+        public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+
+            mRefreshLayout.finishRefresh();
+            mEmptyLayout.setVisibility(View.GONE);
+
+        }
+
+        /**
+         * 模拟数据
+         */
+        private List<${pageName}> loadModels() {
+            List<${pageName}> addressLists = new ArrayList<>();
+
+            for (int i = 0; i < 5; i++) {
+
+                ${pageName} addressList = new ${pageName}();
+                addressLists.add(addressList);
+            }
+
+
+            return addressLists;
+        }
+
+    </#if>
     /**
      * 通过此方法可以使 Fragment 能够与外界做一些交互和通信, 比如说外部的 Activity 想让自己持有的某个 Fragment 对象执行一些方法,
      * 建议在有多个需要与外界交互的方法时, 统一传 {@link Message}, 通过 what 字段来区分不同的方法, 在 {@link #setData(Object)}

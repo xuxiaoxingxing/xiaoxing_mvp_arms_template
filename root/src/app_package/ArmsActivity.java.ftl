@@ -45,6 +45,9 @@ import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 @Route(path = RouterHub.${pageName}_ACTIVITY)
 public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>{
 
+    <#if isTabActivity>
+    private final String[] mTitles = {"彩妝", "化妝品", "3C手機", "日常保健", "日用品"};
+    </#if>
     <#if needHeadRightButton>
         @BindView(R2.id.btnRight)
         TextView mBtnRight;
@@ -108,7 +111,17 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         initRecyclerView();
         initEmpty();
     </#if>
+    <#if isTabActivity>
+    
+        ArrayList<Fragment> mFragments = new ArrayList<>();
+        mFragments.add(new FragmentHome());
+        mFragments.add(new FragmentHome());
+        mFragments.add(new FragmentHome());
+        mFragments.add(new FragmentHome());
+        mFragments.add(new FragmentHome());
 
+        SlidingTabLayoutUtil.init(this, mTitles, mFragments);
+    </#if>
 
     }
     <#if isListActivity>
