@@ -79,6 +79,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     @BindView(R2.id.refreshLayout)
     RefreshLayout mRefreshLayout;
     private static boolean mIsNeedDemo = true;
+    private List<${pageName}.DataBean> mDataBeanList = new ArrayList<>();
     </#if>
 
     @Override
@@ -135,7 +136,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
             mRecyclerView.setLayoutManager(new LinearLayoutManager(${pageName}Activity.this));
             mRecyclerView.addItemDecoration(new DividerItemDecoration(${pageName}Activity.this, VERTICAL));
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-            mRecyclerView.setAdapter(mAdapter = new ${pageName}Adapter(${pageName}Activity.this, loadModels()));
+            mRecyclerView.setAdapter(mAdapter = new ${pageName}Adapter(${pageName}Activity.this, mDataBeanList));
 
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
@@ -158,22 +159,6 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
             mRefreshLayout.finishRefresh();
             mEmptyLayout.setVisibility(View.GONE);
 
-        }
-
-        /**
-         * 模拟数据
-         */
-        private List<${pageName}> loadModels() {
-            List<${pageName}> addressLists = new ArrayList<>();
-
-            for (int i = 0; i < 5; i++) {
-
-                ${pageName} addressList = new ${pageName}();
-                addressLists.add(addressList);
-            }
-
-
-            return addressLists;
         }
 
     </#if>

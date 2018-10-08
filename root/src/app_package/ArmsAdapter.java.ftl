@@ -11,17 +11,17 @@ import java.util.List;
 import ${packageName}.R;
 
 
-public class ${pageName}Adapter extends BaseQuickAdapter<${pageName}, BaseViewHolder> {
+public class ${pageName}Adapter extends BaseQuickAdapter<${pageName}.DataBean, BaseViewHolder> {
 	
 	private Context mContext;
 
-    public ${pageName}Adapter(Context context,@Nullable List<${pageName}> data) {
+    public ${pageName}Adapter(Context context,@Nullable List<${pageName}.DataBean> data) {
         super(R.layout.${adapterLayoutName}, data);
         this.mContext = context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, ${pageName} item) {
+    protected void convert(BaseViewHolder helper, ${pageName}.DataBean item) {
 
     }
 
