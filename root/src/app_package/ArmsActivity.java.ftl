@@ -43,43 +43,50 @@ import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 </#if>
 
 @Route(path = RouterHub.${pageName}_ACTIVITY)
-public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>{
+public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if><#if isScanActivity>, QRCodeView.Delegate</#if>{
 
     <#if isTabActivity>
-    private final String[] mTitles = {"彩妝", "化妝品", "3C手機", "日常保健", "日用品"};
-    </#if>
-    <#if needHeadRightButton>
-        @BindView(R2.id.btnRight)
-        TextView mBtnRight;
-        private View.OnClickListener mRightListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ToastUtils.showToast(XiuGaiIDActivity.this, "保存成功");
-                finish();
+        private final String[] mTitles = {"彩妝", "化妝品", "3C手機", "日常保健", "日用品"};
+        </#if>
+        <#if needHeadRightButton>
+            @BindView(R2.id.btnRight)
+            TextView mBtnRight;
+            private View.OnClickListener mRightListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ToastUtils.showToast(XiuGaiIDActivity.this, "保存成功");
+                    finish();
 
-            }
-        };
+                }
+            };
 
     </#if>
 
 
     <#if isListActivity>
   
-    private ${pageName}Adapter mAdapter;
+        private ${pageName}Adapter mAdapter;
 
-    @BindView(R2.id.empty_text)
-    TextView empty_text;
-    @BindView(R2.id.empty_image)
-    ImageView empty_image;
+        @BindView(R2.id.empty_text)
+        TextView empty_text;
+        @BindView(R2.id.empty_image)
+        ImageView empty_image;
 
-    @BindView(R2.id.empty)
-    View mEmptyLayout;
-    @BindView(R2.id.recyclerView)
-    RecyclerView mRecyclerView;
-    @BindView(R2.id.refreshLayout)
-    RefreshLayout mRefreshLayout;
-    private static boolean mIsNeedDemo = true;
-    private List<${pageName}.DataBean> mDataBeanList = new ArrayList<>();
+        @BindView(R2.id.empty)
+        View mEmptyLayout;
+        @BindView(R2.id.recyclerView)
+        RecyclerView mRecyclerView;
+        @BindView(R2.id.refreshLayout)
+        RefreshLayout mRefreshLayout;
+        private static boolean mIsNeedDemo = true;
+        private List<${pageName}.DataBean> mDataBeanList = new ArrayList<>();
+    </#if>
+    <#if isScanActivity>
+        private static final int REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY = 666;
+        
+        @BindView(R2.id.zxingview)
+        ZXingView mZXingView;
+
     </#if>
 
     @Override
@@ -123,8 +130,12 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
         SlidingTabLayoutUtil.init(this, mTitles, mFragments);
     </#if>
+    <#if isScanActivity>
+        mZXingView.setDelegate(this);
+    </#if>
 
     }
+
     <#if isListActivity>
         private void initEmpty() {
             empty_image.setImageResource(R.drawable.ic_empty);
@@ -159,6 +170,66 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
             mRefreshLayout.finishRefresh();
             mEmptyLayout.setVisibility(View.GONE);
 
+        }
+
+    </#if>
+
+    <#if isScanActivity>
+        @Override
+        protected void onStart() {
+            super.onStart();
+
+            mZXingView.startCamera(); // 打开后置摄像头开始预览，但是并未开始识别
+    //        mZXingView.startCamera(Camera.CameraInfo.CAMERA_FACING_FRONT); // 打开前置摄像头开始预览，但是并未开始识别
+
+            mZXingView.startSpotAndShowRect(); // 显示扫描框，并且延迟0.5秒后开始识别
+        }
+
+        @Override
+        protected void onStop() {
+            mZXingView.stopCamera(); // 关闭摄像头预览，并且隐藏扫描框
+            super.onStop();
+        }
+
+        @Override
+        protected void onDestroy() {
+            mZXingView.onDestroy(); // 销毁二维码扫描控件
+            super.onDestroy();
+        }
+
+        private void vibrate() {
+            Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrator.vibrate(200);
+        }
+
+        @Override
+        public void onScanQRCodeSuccess(String result) {
+            Log.i(TAG, "result:" + result);
+    //        setTitle("扫描结果为：" + result);
+            if (!TextUtils.isEmpty(result)) {
+
+            } else {
+                ArmsUtils.snackbarText("二維碼錯誤");
+            }
+            vibrate();
+            mZXingView.startSpot(); // 延迟0.5秒后开始识别
+        }
+
+        @Override
+        public void onScanQRCodeOpenCameraError() {
+            Log.e(TAG, "打开相机出错");
+        }
+
+
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+
+    //        mZXingView.startSpotAndShowRect(); // 显示扫描框，并且延迟0.5秒后开始识别
+
+            if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY) {
+
+            }
         }
 
     </#if>

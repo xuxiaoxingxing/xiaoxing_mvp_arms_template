@@ -63,6 +63,13 @@
         help="Activity是否是一个Tab选项 ？ 不勾选则不生成" />
 
     <parameter
+        id="isScanActivity"
+        name="Activity是否是一个扫描二维码页面"
+        type="boolean"
+        default="false"
+        help="Activity是否是一个扫描二维码页面 ？ 不勾选则不生成" />
+
+    <parameter
         id="activityName"
         name="Activity Name"
         type="string"

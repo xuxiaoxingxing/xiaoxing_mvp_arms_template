@@ -64,5 +64,10 @@
     <instantiate from="root/res/layout/adapter_item.xml.ftl"
                  to="${escapeXmlAttribute(resOut)}/layout/${adapterLayoutName}.xml" />
 </#if>
+<#if isScanActivity>
+    <merge from="root/res/values/styles.xml" to="${projectOut}/src/main/res/values/styles.xml" />
+    <copy from="root/res/drawable-xxhdpi/scan_icon_scanline.png"
+                   to="${projectOut}/src/main/res/drawable-xxhdpi/scan_icon_scanline.png" />
+</#if>
 
 </recipe>
