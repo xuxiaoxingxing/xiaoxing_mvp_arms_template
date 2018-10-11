@@ -43,7 +43,8 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 </#if>
 
-public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}Contract.View <#if isListActivity>, OnRefreshListener</#if>{
+public class ${pageName}Fragment extends BaseFragment
+<${pageName}Presenter> implements ${pageName}Contract.View <#if isListActivity>, OnRefreshListener</#if>{
 
     <#if isListActivity>
   
@@ -65,23 +66,25 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
     </#if>
 
     public static ${pageName}Fragment newInstance() {
-        ${pageName}Fragment fragment = new ${pageName}Fragment();
-        return fragment;
+${pageName}Fragment fragment = new ${pageName}Fragment();
+    return fragment;
     }
 
     @Override
     public void setupFragmentComponent(@NonNull AppComponent appComponent) {
-        Dagger${pageName}Component //如找不到该类,请编译一下项目
-                .builder()
-                .appComponent(appComponent)
-                .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}Module(this))
-                .build()
-                .inject(this);
+    Dagger${pageName}Component //如找不到该类,请编译一下项目
+    .builder()
+    .appComponent(appComponent)
+    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}
+    Module(this))
+    .build()
+    .inject(this);
     }
 
     @Override
-    public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.${fragmentLayoutName}, container, false);
+    public View initView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle
+    savedInstanceState) {
+    return inflater.inflate(R.layout.${fragmentLayoutName}, container, false);
     }
 
     @Override
@@ -116,7 +119,8 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
         }
 
         private void initRefreshLayout() {
-            mRefreshLayout.setRefreshHeader(new ClassicsHeader(getActivity()).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
+            mRefreshLayout.setRefreshHeader(new
+        ClassicsHeader(getActivity()).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
             mRefreshLayout.setOnRefreshListener(this);
             mRefreshLayout.autoRefresh();
             mRefreshLayout.setEnableLoadMore(false);
@@ -132,16 +136,19 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
 
     </#if>
     /**
-     * 通过此方法可以使 Fragment 能够与外界做一些交互和通信, 比如说外部的 Activity 想让自己持有的某个 Fragment 对象执行一些方法,
-     * 建议在有多个需要与外界交互的方法时, 统一传 {@link Message}, 通过 what 字段来区分不同的方法, 在 {@link #setData(Object)}
-     * 方法中就可以 {@code switch} 做不同的操作, 这样就可以用统一的入口方法做多个不同的操作, 可以起到分发的作用
-     * <p>
-     * 调用此方法时请注意调用时 Fragment 的生命周期, 如果调用 {@link #setData(Object)} 方法时 {@link Fragment#onCreate(Bundle)} 还没执行
-     * 但在 {@link #setData(Object)} 里却调用了 Presenter 的方法, 是会报空的, 因为 Dagger 注入是在 {@link Fragment#onCreate(Bundle)} 方法中执行的
-     * 然后才创建的 Presenter, 如果要做一些初始化操作,可以不必让外部调用 {@link #setData(Object)}, 在 {@link #initData(Bundle)} 中初始化就可以了
-     * <p>
-     * Example usage:
-     * <pre>
+    * 通过此方法可以使 Fragment 能够与外界做一些交互和通信, 比如说外部的 Activity 想让自己持有的某个 Fragment 对象执行一些方法,
+    * 建议在有多个需要与外界交互的方法时, 统一传 {@link Message}, 通过 what 字段来区分不同的方法, 在 {@link #setData(Object)}
+    * 方法中就可以 {@code switch} 做不同的操作, 这样就可以用统一的入口方法做多个不同的操作, 可以起到分发的作用
+    * <p>
+        * 调用此方法时请注意调用时 Fragment 的生命周期, 如果调用 {@link #setData(Object)} 方法时 {@link Fragment#onCreate(Bundle)} 还没执行
+        * 但在 {@link #setData(Object)} 里却调用了 Presenter 的方法, 是会报空的, 因为 Dagger 注入是在 {@link Fragment#onCreate(Bundle)}
+        方法中执行的
+        * 然后才创建的 Presenter, 如果要做一些初始化操作,可以不必让外部调用 {@link #setData(Object)}, 在 {@link #initData(Bundle)} 中初始化就可以了
+        *
+    <p>
+        * Example usage:
+        *
+    <pre>
      * public void setData(@Nullable Object data) {
      *     if (data != null && data instanceof Message) {
      *         switch (((Message) data).what) {
@@ -164,9 +171,9 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
      * data.arg1 = 1;
      * fragment.setData(data);
      * </pre>
-     *
-     * @param data 当不需要参数时 {@code data} 可以为 {@code null}
-     */
+    *
+    * @param data 当不需要参数时 {@code data} 可以为 {@code null}
+    */
     @Override
     public void setData(@Nullable Object data) {
 
@@ -184,18 +191,18 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
 
     @Override
     public void showMessage(@NonNull String message) {
-        checkNotNull(message);
-        ArmsUtils.snackbarText(message);
+    checkNotNull(message);
+    ArmsUtils.snackbarText(message);
     }
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
+    checkNotNull(intent);
+    ArmsUtils.startActivity(intent);
     }
 
     @Override
     public void killMyself() {
 
     }
-}
+    }

@@ -43,7 +43,8 @@ import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 </#if>
 
 @Route(path = RouterHub.${pageName}_ACTIVITY)
-public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>
+public class ${pageName}Activity extends BaseActivity
+<${pageName}Presenter> implements ${pageName}Contract.View  <#if isListActivity>, OnRefreshListener</#if>
 <#if isScanActivity>, QRCodeView.Delegate</#if>
 <#if isGoogleDingWeiActivity>
 , GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener
@@ -51,7 +52,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
     <#if isTabActivity>
         private final String[] mTitles = {"彩妝", "化妝品", "3C手機", "日常保健", "日用品"};
-        </#if>
+    </#if>
         <#if needHeadRightButton>
             @BindView(R2.id.btnRight)
             TextView mBtnRight;
@@ -64,7 +65,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
                 }
             };
 
-    </#if>
+        </#if>
 
 
     <#if isListActivity>
@@ -108,17 +109,18 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     </#if>
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-        Dagger${pageName}Component //如找不到该类,请编译一下项目
-                .builder()
-                .appComponent(appComponent)
-                .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}Module(this))
-                .build()
-                .inject(this);
+    Dagger${pageName}Component //如找不到该类,请编译一下项目
+    .builder()
+    .appComponent(appComponent)
+    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}
+    Module(this))
+    .build()
+    .inject(this);
     }
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-        return R.layout.${activityLayoutName}; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+    return R.layout.${activityLayoutName}; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     @Override
@@ -138,7 +140,8 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     </#if>
     <#if isTabActivity>
     
-        ArrayList<Fragment> mFragments = new ArrayList<>();
+        ArrayList
+    <Fragment> mFragments = new ArrayList<>();
         mFragments.add(new FragmentHome());
         mFragments.add(new FragmentHome());
         mFragments.add(new FragmentHome());
@@ -213,7 +216,8 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
             mOption.setNeedAddress(true);//可选，设置是否返回逆地理地址信息。默认是true
             mOption.setOnceLocation(true);//可选，设置是否单次定位。默认是false
             mOption.setOnceLocationLatest(false);//可选，设置是否等待wifi更新，默认为false.如果设置为true,会自动变为单次定位，持续定位时不要使用
-            AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选， 设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
+            AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTP);//可选，
+        设置网络请求的协议。可选HTTP或者HTTPS。默认为HTTP
             mOption.setSensorEnable(false);//可选，设置是否使用传感器。默认是false
             mOption.setWifiScan(true); //可选，设置是否开启wifi扫描。默认为true，如果设置为false会同时停止主动更新，停止以后完全依赖于系统更新，定位位置可能存在误差
             mOption.setLocationCacheEnable(true); //可选，设置是否使用缓存定位，默认为true
@@ -344,13 +348,15 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    Utils.navigation(${pageName}Activity.this, RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
+                    Utils.navigation(${pageName}Activity.this,
+        RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
                 }
             });
         }
 
         private void initRefreshLayout() {
-            mRefreshLayout.setRefreshHeader(new ClassicsHeader(this).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
+            mRefreshLayout.setRefreshHeader(new
+        ClassicsHeader(this).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
             mRefreshLayout.setOnRefreshListener(this);
             mRefreshLayout.autoRefresh();
             mRefreshLayout.setEnableLoadMore(false);
@@ -453,7 +459,8 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         }
 
         @Override
-        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[]
+        grantResults) {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
             if (requestCode == 103) {
                 getLastLocation();
@@ -480,9 +487,12 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         public void onConnected(@Nullable Bundle bundle) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 Log.i("MapsActivity", "--onConnected--");
-                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(getApplicationContext(), "Permission to access the location is missing.", Toast.LENGTH_LONG).show();
+                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) !=
+        PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) !=
+        PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), "Permission to access the location is missing.",
+        Toast.LENGTH_LONG).show();
                     requestPermissions(getPermissions(), 103);
                     return;
                 }
@@ -557,18 +567,18 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
     @Override
     public void showMessage(@NonNull String message) {
-        checkNotNull(message);
-        ArmsUtils.snackbarText(message);
+    checkNotNull(message);
+    ArmsUtils.snackbarText(message);
     }
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
-        checkNotNull(intent);
-        ArmsUtils.startActivity(intent);
+    checkNotNull(intent);
+    ArmsUtils.startActivity(intent);
     }
 
     @Override
     public void killMyself() {
-        finish();
+    finish();
     }
-}
+    }

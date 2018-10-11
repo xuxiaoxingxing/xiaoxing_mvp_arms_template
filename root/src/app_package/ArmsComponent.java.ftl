@@ -11,7 +11,7 @@ import ${ativityPackageName}.${pageName}Activity;
 import ${fragmentPackageName}.${pageName}Fragment;
 <#elseif needActivity>
 import com.jess.arms.di.scope.ActivityScope;
-import ${ativityPackageName}.${pageName}Activity;   
+import ${ativityPackageName}.${pageName}Activity;
 <#elseif needFragment>
 import com.jess.arms.di.scope.FragmentScope;
 import ${fragmentPackageName}.${pageName}Fragment;
@@ -26,10 +26,10 @@ import ${fragmentPackageName}.${pageName}Fragment;
 </#if>
 @Component(modules = ${pageName}Module.class,dependencies = AppComponent.class)
 public interface ${pageName}Component {
-  <#if needActivity && needFragment>
+<#if needActivity && needFragment>
 	void inject(${pageName}Activity activity);
 	void inject(${pageName}Fragment fragment);
-  <#elseif needActivity || needFragment>
+<#elseif needActivity || needFragment>
     void inject(<#if needFragment>${pageName}Fragment fragment<#else>${pageName}Activity activity</#if>);
-  </#if>
+</#if>
 }

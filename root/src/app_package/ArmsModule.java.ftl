@@ -27,27 +27,27 @@ public class ${pageName}Module {
         this.view = view;
     }
 
-    <#if needActivity && needFragment>
+<#if needActivity && needFragment>
     @ActivityScope
-    <#elseif needActivity>
+<#elseif needActivity>
     @ActivityScope
-    <#elseif needFragment>
+<#elseif needFragment>
     @FragmentScope
-    </#if>
+</#if>
     @Provides
-    ${pageName}Contract.View provide${pageName}View(){
+${pageName}Contract.View provide${pageName}View(){
         return this.view;
     }
 
-    <#if needActivity && needFragment>
+<#if needActivity && needFragment>
     @ActivityScope
-    <#elseif needActivity>
+<#elseif needActivity>
     @ActivityScope
-    <#elseif needFragment>
+<#elseif needFragment>
     @FragmentScope
-    </#if>
+</#if>
     @Provides
-    ${pageName}Contract.Model provide${pageName}Model(${pageName}Model model){
+${pageName}Contract.Model provide${pageName}Model(${pageName}Model model){
         return model;
     }
 }
