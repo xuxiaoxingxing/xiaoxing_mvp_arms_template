@@ -70,6 +70,20 @@
         help="Activity是否是一个扫描二维码页面 ？ 不勾选则不生成" />
 
     <parameter
+        id="isGoogleDingWeiActivity"
+        name="Activity是否是一个谷歌地图定位"
+        type="boolean"
+        default="false"
+        help="Activity是否是一个谷歌地图定位 ？ 不勾选则不生成" />
+        
+    <parameter
+        id="isGaoDeDingWeiActivity"
+        name="Activity是否是一个高德地图定位"
+        type="boolean"
+        default="false"
+        help="Activity是否是一个高德地图定位 ？ 不勾选则不生成" />
+
+    <parameter
         id="activityName"
         name="Activity Name"
         type="string"

@@ -7,5 +7,22 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
 
+            <#if isGoogleDingWeiActivity>
+               <meta-data
+	            android:name="com.google.android.geo.API_KEY"
+	            android:value="@string/google_maps_key" />
+
+		        <service
+		            android:name="${ativityPackageName}.mvp.ui.service.FetchAddressIntentService"
+		            android:exported="false" />
+            </#if>
+
+            <#if isGaoDeDingWeiActivity>
+                <meta-data
+                android:name="com.amap.api.v2.apikey"
+                android:value="ea7cda6c81e4e0fa49025ed6f2bc2e19" />
+                <service android:name="com.amap.api.location.APSService" />
+            </#if>
+
     </application>
 </manifest>
