@@ -16,11 +16,11 @@ import ${presenterPackageName}.${pageName}Presenter;
 
 import ${packageName}.R;
 
+import me.jessyan.armscomponent.commonres.utils.ToolbarUtils;
+import me.jessyan.armscomponent.commo
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
-
-import me.jessyan.armscomponent.commonres.utils.ToolbarUtils;
-import me.jessyan.armscomponent.commonsdk.core.RouterHub;
+nsdk.core.RouterHub;
 
 <#if isListActivity>
     import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
@@ -112,8 +112,7 @@ public class ${pageName}Activity extends BaseActivity
     Dagger${pageName}Component //如找不到该类,请编译一下项目
     .builder()
     .appComponent(appComponent)
-    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}
-    Module(this))
+    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}Module(this))
     .build()
     .inject(this);
     }

@@ -1,4 +1,5 @@
 package ${adapterEntityName};
+import java.util.List;
 
 public class ${pageName} {
 
