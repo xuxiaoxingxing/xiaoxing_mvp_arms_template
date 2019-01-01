@@ -43,8 +43,7 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 </#if>
 
-public class ${pageName}Fragment extends BaseFragment
-<${pageName}Presenter> implements ${pageName}Contract.View <#if isListActivity>, OnRefreshListener</#if>{
+public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}Contract.View <#if isListActivity>, OnRefreshListener</#if>{
 
     <#if isListActivity>
   
@@ -75,8 +74,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
     Dagger${pageName}Component //如找不到该类,请编译一下项目
     .builder()
     .appComponent(appComponent)
-    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}
-    Module(this))
+    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}Module(this))
     .build()
     .inject(this);
     }

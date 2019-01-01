@@ -17,10 +17,10 @@ import ${presenterPackageName}.${pageName}Presenter;
 import ${packageName}.R;
 
 import me.jessyan.armscomponent.commonres.utils.ToolbarUtils;
-import me.jessyan.armscomponent.commo
+
+import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
-nsdk.core.RouterHub;
 
 <#if isListActivity>
     import static android.support.v7.widget.DividerItemDecoration.VERTICAL;

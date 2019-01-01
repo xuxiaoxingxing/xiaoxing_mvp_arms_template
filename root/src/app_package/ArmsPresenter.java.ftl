@@ -26,8 +26,7 @@ import ${contractPackageName}.${pageName}Contract;
 <#elseif needFragment>
 @FragmentScope
 </#if>
-public class ${pageName}Presenter extends BasePresenter
-<${pageName}Contract.Model, ${pageName}Contract.View> {
+public class ${pageName}Presenter extends BasePresenter<${pageName}Contract.Model, ${pageName}Contract.View> {
     @Inject
     RxErrorHandler mErrorHandler;
     @Inject
