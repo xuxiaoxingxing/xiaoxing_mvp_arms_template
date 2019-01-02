@@ -31,7 +31,7 @@
 
 	<#if needHeadRightButton>
 		<include layout="@layout/public_toolbar_right_button"/>
-    <#elseif needActivity>
+    <#elseif isNormalActivity>
 		<include layout="@layout/public_toolbar"/>
     </#if>
 
@@ -75,7 +75,7 @@
 
     <#if needHeadRightButton>
         <include layout="@layout/public_toolbar_right_button"/>
-    <#elseif needActivity>
+    <#elseif isNormalActivity>
         <include layout="@layout/public_toolbar"/>
     </#if>
 
@@ -124,7 +124,7 @@
 
 	<#if needHeadRightButton>
 		<include layout="@layout/public_toolbar_right_button"/>
-    <#elseif needActivity>
+    <#elseif isNormalActivity>
 		<include layout="@layout/public_toolbar"/>
     </#if>
 

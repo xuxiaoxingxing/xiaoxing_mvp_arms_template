@@ -24,15 +24,14 @@
             type="string"
             constraints="package"
             default="com.mycompany.myapp"
-            help="请填写你的项目包名,请认真核实此包名是否是正确的项目包名,不能包含子包,正确的格式如:me.jessyan.arms"
-    />
+            help="请填写你的项目包名,请认真核实此包名是否是正确的项目包名,不能包含子包,正确的格式如:me.jessyan.arms"/>
 
     <parameter
-            id="needActivity"
-            name="Generate Activity"
+            id="isNormalActivity"
+            name="Activity是否是一个Normal Activity"
             type="boolean"
-            default="true"
-            help="是否需要生成 Activity ? 不勾选则不生成"/>
+            default="false"
+            help="Activity是否是一个Normal Activity ? 不勾选则不生成"/>
 
     <parameter
             id="needHeadRightButton"
@@ -90,7 +89,7 @@
             constraints="nonempty"
             suggest="default_title"
             default="默认标题"
-            visibility="needActivity"
+            visibility="isNormalActivity|isListActivity"
             help="Activity 标题"/>
 
     <parameter
@@ -110,7 +109,7 @@
             constraints="layout|nonempty"
             suggest="${activityToLayout(pageName)}"
             default="activity_main"
-            visibility="needActivity"
+            visibility="isNormalActivity|isListActivity"
             help="Activity 创建之前需要填写 Activity 的布局名,若布局已创建就直接填写此布局名,若还没创建此布局,请勾选下面的单选框"/>
 
     <parameter
@@ -118,7 +117,7 @@
             name="Generate Activity Layout"
             type="boolean"
             default="true"
-            visibility="needActivity"
+            visibility="isNormalActivity|isListActivity"
             help="是否需要给 Activity 生成布局? 若勾选,则使用上面的布局名给此 Activity 创建默认的布局"/>
 
     <parameter
@@ -127,7 +126,7 @@
             type="string"
             constraints="package"
             suggest="${packageName}.mvp.ui.activity"
-            visibility="needActivity"
+            visibility="isNormalActivity|isListActivity"
             help="Activity 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
     />
 

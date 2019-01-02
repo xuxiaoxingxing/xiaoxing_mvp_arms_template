@@ -3,9 +3,9 @@ package ${presenterPackageName};
 import android.app.Application;
 
 import com.jess.arms.integration.AppManager;
-<#if needActivity && needFragment>
+<#if isNormalActivity && needFragment>
 import com.jess.arms.di.scope.ActivityScope;
-<#elseif needActivity>
+<#elseif isNormalActivity>
 import com.jess.arms.di.scope.ActivityScope;
 <#elseif needFragment>
 import com.jess.arms.di.scope.FragmentScope;
@@ -19,9 +19,9 @@ import ${contractPackageName}.${pageName}Contract;
 
 
 
-<#if needActivity && needFragment>
+<#if isNormalActivity && needFragment>
 @ActivityScope
-<#elseif needActivity>
+<#elseif isNormalActivity>
 @ActivityScope
 <#elseif needFragment>
 @FragmentScope

@@ -5,11 +5,11 @@ import com.jess.arms.di.component.AppComponent;
 
 import ${moudlePackageName}.${pageName}Module;
 
-<#if needActivity && needFragment>
+<#if isNormalActivity && needFragment>
 import com.jess.arms.di.scope.ActivityScope;
 import ${ativityPackageName}.${pageName}Activity;
 import ${fragmentPackageName}.${pageName}Fragment;
-<#elseif needActivity>
+<#elseif isNormalActivity>
 import com.jess.arms.di.scope.ActivityScope;
 import ${ativityPackageName}.${pageName}Activity;
 <#elseif needFragment>
@@ -17,19 +17,19 @@ import com.jess.arms.di.scope.FragmentScope;
 import ${fragmentPackageName}.${pageName}Fragment;
 </#if>
 
-<#if needActivity && needFragment>
+<#if isNormalActivity && needFragment>
 @ActivityScope
-<#elseif needActivity>
+<#elseif isNormalActivity>
 @ActivityScope
 <#elseif needFragment>
 @FragmentScope
 </#if>
 @Component(modules = ${pageName}Module.class,dependencies = AppComponent.class)
 public interface ${pageName}Component {
-<#if needActivity && needFragment>
+<#if isNormalActivity && needFragment>
 	void inject(${pageName}Activity activity);
 	void inject(${pageName}Fragment fragment);
-<#elseif needActivity || needFragment>
+<#elseif isNormalActivity || needFragment>
     void inject(<#if needFragment>${pageName}Fragment fragment<#else>${pageName}Activity activity</#if>);
 </#if>
 }

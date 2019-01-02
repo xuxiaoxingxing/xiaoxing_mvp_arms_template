@@ -128,7 +128,7 @@ public class ${pageName}Activity extends BaseActivity
     <#if needHeadRightButton>
         ToolbarUtils.initToolbarTitleBackWithRightButton(this, "${activityName}", mRightListener);
         mBtnRight.setText(${activityRightButtonName});
-    <#elseif needActivity>
+    <#elseif isNormalActivity>
         ToolbarUtils.initToolbarTitleBack(this, "${activityName}");
     </#if>
 
