@@ -5,9 +5,9 @@ import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 
-<#if isNormalActivity && needFragment>
+<#if needActivity && needFragment>
 import com.jess.arms.di.scope.ActivityScope;
-<#elseif isNormalActivity>
+<#elseif needActivity>
 import com.jess.arms.di.scope.ActivityScope;
 <#elseif needFragment>
 import com.jess.arms.di.scope.FragmentScope;
@@ -17,9 +17,9 @@ import javax.inject.Inject;
 import ${contractPackageName}.${pageName}Contract;
 
 
-<#if isNormalActivity && needFragment>
+<#if needActivity && needFragment>
 @ActivityScope
-<#elseif isNormalActivity>
+<#elseif needActivity>
 @ActivityScope
 <#elseif needFragment>
 @FragmentScope

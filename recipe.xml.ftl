@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <recipe>
-    <!-- <#if isNormalActivity>
+    <!-- <#if needActivity>
     <merge from="root/AndroidManifest.xml.ftl"
            to="${escapeXmlAttribute(manifestOut)}/AndroidManifest.xml" />
 </#if> -->
-<#if isNormalActivity>
+<#if needActivity>
     <merge from="root/AndroidManifest.xml.ftl"
            to="app/src/main/AndroidManifest.xml"></merge>
 </#if>
 
-<#if isNormalActivity && generateActivityLayout>
-    <instantiate from="root/res/layout/simple.xml.ftl"
-                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
-</#if>
+<#--<#if needActivity && generateActivityLayout>-->
+    <#--<instantiate from="root/res/layout/simple.xml.ftl"-->
+                 <#--to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>-->
+<#--</#if>-->
 
 <#if needFragment && generateFragmentLayout>
     <instantiate from="root/res/layout/simple.xml.ftl"
@@ -20,11 +20,11 @@
 </#if>
 
 
-<#if isNormalActivity>
-    <instantiate from="root/src/app_package/ArmsActivity.java.ftl"
-                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
-    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
-</#if>
+<#--<#if needActivity>-->
+    <#--<instantiate from="root/src/app_package/ArmsActivity.java.ftl"-->
+                 <#--to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>-->
+    <#--<open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>-->
+<#--</#if>-->
 
 <#if needFragment>
     <instantiate from="root/src/app_package/ArmsFragment.java.ftl"
@@ -56,20 +56,24 @@
 
 </#if>
 
-<#if isListActivity>
+<#if needActivity&&isListActivity>
     <instantiate from="root/src/app_package/ArmsListActivity.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/res/layout/activity_list.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+
+</#if>
+<#if isListActivity>
     <instantiate from="root/src/app_package/ArmsAdapter.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(adapterPackageName)}/${pageName}Adapter.java"></instantiate>
     <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
     <instantiate from="root/res/layout/adapter_item.xml.ftl"
                  to="${escapeXmlAttribute(resOut)}/layout/${adapterLayoutName}.xml"></instantiate>
-    <instantiate from="root/res/layout/activity_list.xml.ftl"
-                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
-    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
-
-    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
 
 </#if>
 

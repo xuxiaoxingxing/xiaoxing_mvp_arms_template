@@ -1,8 +1,8 @@
 package ${moudlePackageName};
 
-<#if isNormalActivity && needFragment>
+<#if needActivity && needFragment>
 import com.jess.arms.di.scope.ActivityScope;
-<#elseif isNormalActivity>
+<#elseif needActivity>
 import com.jess.arms.di.scope.ActivityScope;
 <#elseif needFragment>
 import com.jess.arms.di.scope.FragmentScope;
@@ -27,9 +27,9 @@ public class ${pageName}Module {
         this.view = view;
     }
 
-<#if isNormalActivity && needFragment>
+<#if needActivity && needFragment>
     @ActivityScope
-<#elseif isNormalActivity>
+<#elseif needActivity>
     @ActivityScope
 <#elseif needFragment>
     @FragmentScope
@@ -39,9 +39,9 @@ ${pageName}Contract.View provide${pageName}View(){
         return this.view;
     }
 
-<#if isNormalActivity && needFragment>
+<#if needActivity && needFragment>
     @ActivityScope
-<#elseif isNormalActivity>
+<#elseif needActivity>
     @ActivityScope
 <#elseif needFragment>
     @FragmentScope
