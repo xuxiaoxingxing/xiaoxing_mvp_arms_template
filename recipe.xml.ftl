@@ -77,6 +77,21 @@
 
 </#if>
 
+<#if isNormalActivity>
+    <instantiate from="root/src/app_package/ArmsNormalActivity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/res/layout/activity_normal.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+    <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
+    
+    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+
+</#if>
+
 <#if isScanActivity>
     <merge from="root/res/values/styles.xml.ftl" to="${projectOut}/src/main/res/values/styles.xml"></merge>
     <copy from="root/res/drawable-xxhdpi/scan_icon_scanline.png"

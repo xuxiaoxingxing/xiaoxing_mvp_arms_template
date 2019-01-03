@@ -23,6 +23,11 @@ import ${contractPackageName}.${pageName}Contract;
     import ${packageName}.mvp.ui.entity.${pageName};
     import io.reactivex.Observable;
 </#if>
+<#if isNormalActivity>
+    import com.xiaoxing.maji.mvp.api.ApiService;
+    import ${packageName}.mvp.ui.entity.${pageName};
+    import io.reactivex.Observable;
+</#if>
 
 
 
@@ -48,6 +53,13 @@ public class ${pageName}Model extends BaseModel implements ${pageName}Contract.M
         @Override
         public Observable<${pageName}> get${pageName}List() {
             return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}List();
+
+        }
+    </#if>
+    <#if isNormalActivity>
+        @Override
+        public Observable<${pageName}> get${pageName}Data() {
+            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data();
 
         }
     </#if>
