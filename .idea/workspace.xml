@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="864a2630-21d0-4435-a0c4-af795f184ae0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/root/res/layout/activity_main.xml.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/res/layout/fragment_tab.xml.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsActivityMain.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab1.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab2.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab3.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab4.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab5.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/MyViewPagerAdapter.java.ftl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/src/app_package/NoTouchViewPager.java.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root/res/layout/activity_scan.xml.ftl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/root/src/app_package/ArmsActivityScan.java.ftl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipe.xml.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/recipe.xml.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/app_package/ArmsListActivity.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/app_package/ArmsActivityList.java.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/src/app_package/ArmsNormalActivity.java.ftl" beforeDir="false" afterPath="$PROJECT_DIR$/root/src/app_package/ArmsActivityNormal.java.ftl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.xml" beforeDir="false" afterPath="$PROJECT_DIR$/template.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,35 +18,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="99" column="38" lean-forward="true" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/recipe.xml.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="111" column="60" selection-start-line="111" selection-start-column="60" selection-end-line="111" selection-end-column="60" />
+            <state relative-caret-position="409">
+              <caret line="122" column="30" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivityMain.java.ftl">
+        <entry file="file://$PROJECT_DIR$/recipe.xml.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1326">
-              <caret line="128" column="5" lean-forward="true" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
+            <state relative-caret-position="396">
+              <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/root/res/layout/fragment_tab.xml.ftl">
+        <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivityScan.java.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+            <state relative-caret-position="172">
+              <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivity.java.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="373" column="23" selection-start-line="373" selection-start-column="9" selection-end-line="373" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -66,8 +55,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isTabActivity</find>
-      <find>isGaoDeDingWeiActivity</find>
       <find>&lt;#if</find>
       <find>simple</find>
       <find>simple.xml</find>
@@ -96,6 +83,8 @@
       <find>ArmsMainActivity</find>
       <find>isListActivity</find>
       <find>isMainActivity</find>
+      <find>isTabActivity</find>
+      <find>isScanActivity</find>
     </findStrings>
     <replaceStrings>
       <replace>isNormalActivity</replace>
@@ -124,7 +113,6 @@
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsAdapterEntity.java.ftl" />
         <option value="$PROJECT_DIR$/root/res/layout/activity_normal.xml.ftl" />
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsModel.java.ftl" />
-        <option value="$PROJECT_DIR$/root/src/app_package/ArmsContract.java.ftl" />
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsPresenter.java.ftl" />
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsNormalActivity.java.ftl" />
         <option value="$PROJECT_DIR$/root/res/layout/activity_main.xml.ftl" />
@@ -138,8 +126,11 @@
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab4.java.ftl" />
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsFragmentTab5.java.ftl" />
         <option value="$PROJECT_DIR$/template.xml" />
-        <option value="$PROJECT_DIR$/recipe.xml.ftl" />
         <option value="$PROJECT_DIR$/root/src/app_package/ArmsActivityMain.java.ftl" />
+        <option value="$PROJECT_DIR$/root/res/layout/activity_scan.xml.ftl" />
+        <option value="$PROJECT_DIR$/root/src/app_package/ArmsContract.java.ftl" />
+        <option value="$PROJECT_DIR$/root/src/app_package/ArmsActivityScan.java.ftl" />
+        <option value="$PROJECT_DIR$/recipe.xml.ftl" />
       </list>
     </option>
   </component>
@@ -247,16 +238,15 @@
       <workItem from="1546396719031" duration="4252000" />
       <workItem from="1546418607821" duration="4962000" />
       <workItem from="1546478421974" duration="193000" />
-      <workItem from="1546478895734" duration="4541000" />
+      <workItem from="1546478895734" duration="6431000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23243000" />
+    <option name="totallyTimeSpent" value="25133000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20978552" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -289,7 +279,7 @@
       <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25402144" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20978552" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -431,13 +421,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsContract.java.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivityList.java.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -449,20 +432,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="86" column="25" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivity.java.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/res/layout/activity_main.xml.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
         </state>
       </provider>
     </entry>
@@ -535,24 +504,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivityMain.java.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1326">
+          <caret line="128" column="5" lean-forward="true" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/res/layout/activity_main.xml.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/res/layout/activity_scan.xml.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/template.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="99" column="38" lean-forward="true" selection-start-line="99" selection-start-column="38" selection-end-line="99" selection-end-column="38" />
+        <state relative-caret-position="409">
+          <caret line="122" column="30" selection-start-line="122" selection-start-column="16" selection-end-line="122" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsContract.java.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivity.java.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="373" column="23" selection-start-line="373" selection-start-column="9" selection-end-line="373" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivityScan.java.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="59" column="14" lean-forward="true" selection-start-line="59" selection-start-column="14" selection-end-line="59" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/recipe.xml.ftl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="111" column="60" selection-start-line="111" selection-start-column="60" selection-end-line="111" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/root/src/app_package/ArmsActivityMain.java.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="128" column="5" lean-forward="true" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
+        <state relative-caret-position="396">
+          <caret line="142" lean-forward="true" selection-start-line="142" selection-end-line="142" />
         </state>
       </provider>
     </entry>
