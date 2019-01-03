@@ -57,7 +57,7 @@
 </#if>
 
 <#if needActivity&&isListActivity>
-    <instantiate from="root/src/app_package/ArmsListActivity.java.ftl"
+    <instantiate from="root/src/app_package/ArmsActivityList.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
     <instantiate from="root/res/layout/activity_list.xml.ftl"
                  to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
@@ -78,14 +78,51 @@
 </#if>
 
 <#if isNormalActivity>
-    <instantiate from="root/src/app_package/ArmsNormalActivity.java.ftl"
+    <instantiate from="root/src/app_package/ArmsActivityNormal.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
     <instantiate from="root/res/layout/activity_normal.xml.ftl"
                  to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
     <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
-    
+
     <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+
+</#if>
+
+<#if isMainActivity>
+    <instantiate from="root/src/app_package/ArmsActivityMain.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/res/layout/activity_main.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+    <instantiate from="root/src/app_package/MyViewPagerAdapter.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/adapter/MyViewPagerAdapter.java"></instantiate>
+    <instantiate from="root/src/app_package/NoTouchViewPager.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/viewpager/NoTouchViewPager.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsFragmentTab1.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/fragment/Tab1Fragment.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsFragmentTab2.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/fragment/Tab2Fragment.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsFragmentTab3.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/fragment/Tab3Fragment.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsFragmentTab4.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/fragment/Tab4Fragment.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsFragmentTab5.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(packageName)}/mvp/ui/fragment/Tab5Fragment.java"></instantiate>
+
+    <instantiate from="root/res/layout/fragment_tab.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/fragment_tab1.xml"></instantiate>
+    <instantiate from="root/res/layout/fragment_tab.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/fragment_tab2.xml"></instantiate>
+    <instantiate from="root/res/layout/fragment_tab.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/fragment_tab3.xml"></instantiate>
+    <instantiate from="root/res/layout/fragment_tab.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/fragment_tab4.xml"></instantiate>
+    <instantiate from="root/res/layout/fragment_tab.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/fragment_tab5.xml"></instantiate>
+
     <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
 
     <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>

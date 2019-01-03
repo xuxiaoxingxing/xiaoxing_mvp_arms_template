@@ -9,7 +9,7 @@
 
     <category value="Activity"/>
     <formfactor value="Mobile"/>
- 
+
     <parameter
             id="pageName"
             name="Page Name"
@@ -53,6 +53,57 @@
             type="boolean"
             default="false"
             help="Activity是否是一个主页 ？ 不勾选则不生成"/>
+
+
+    <!--<parameter-->
+            <!--id="fragmentTab1"-->
+            <!--name="FragmentTab1"-->
+            <!--type="string"-->
+            <!--constraints="nonempty"-->
+            <!--suggest="FragmentTab1"-->
+            <!--default="FragmentTab1"-->
+            <!--visibility="isMainActivity"-->
+            <!--help="FragmentTab1"/>-->
+
+    <!--<parameter-->
+            <!--id="fragmentTab2"-->
+            <!--name="FragmentTab2"-->
+            <!--type="string"-->
+            <!--constraints="nonempty"-->
+            <!--suggest="FragmentTab2"-->
+            <!--default="FragmentTab2"-->
+            <!--visibility="isMainActivity"-->
+            <!--help="FragmentTab2"/>-->
+
+    <!--<parameter-->
+            <!--id="fragmentTab3"-->
+            <!--name="FragmentTab3"-->
+            <!--type="string"-->
+            <!--constraints="nonempty"-->
+            <!--suggest="FragmentTab3"-->
+            <!--default="FragmentTab3"-->
+            <!--visibility="isMainActivity"-->
+            <!--help="FragmentTab3"/>-->
+
+    <!--<parameter-->
+            <!--id="fragmentTab4"-->
+            <!--name="FragmentTab4"-->
+            <!--type="string"-->
+            <!--constraints="nonempty"-->
+            <!--suggest="FragmentTab4"-->
+            <!--default="FragmentTab4"-->
+            <!--visibility="isMainActivity"-->
+            <!--help="FragmentTab4"/>-->
+
+    <!--<parameter-->
+            <!--id="fragmentTab5"-->
+            <!--name="FragmentTab5"-->
+            <!--type="string"-->
+            <!--constraints="nonempty"-->
+            <!--suggest="FragmentTab5"-->
+            <!--default="FragmentTab5"-->
+            <!--visibility="isMainActivity"-->
+            <!--help="FragmentTab5"/>-->
 
     <parameter
             id="isListActivity"
