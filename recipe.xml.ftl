@@ -15,7 +15,7 @@
 <#--</#if>-->
 
 <#if needFragment && generateFragmentLayout>
-    <instantiate from="root/res/layout/simple.xml.ftl"
+    <instantiate from="root/res/layout/fragment.xml.ftl"
                  to="${escapeXmlAttribute(resOut)}/layout/${fragmentLayoutName}.xml"></instantiate>
 </#if>
 
@@ -30,6 +30,15 @@
     <instantiate from="root/src/app_package/ArmsFragment.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.java"></instantiate>
     <open file="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.java"></open>
+</#if>
+<#if isListFragment>
+    <instantiate from="root/src/app_package/ArmsAdapter.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterPackageName)}/${pageName}Adapter.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
+    <instantiate from="root/res/layout/adapter_item.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${adapterLayoutName}.xml"></instantiate>
+
 </#if>
 
 <#if needContract>

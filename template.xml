@@ -37,6 +37,7 @@
             id="isNormalActivity"
             name="Activity是否是一个Normal Activity"
             type="boolean"
+            visibility="needActivity"
             default="false"
             help="Activity是否是一个Normal Activity ? 不勾选则不生成"/>
 
@@ -44,6 +45,7 @@
             id="needHeadRightButton"
             name="Activity头部标题是否有右侧的按钮"
             type="boolean"
+            visibility="needActivity"
             default="false"
             help="Activity头部标题是否有右侧的按钮 ? 不勾选则默认没有"/>
 
@@ -51,6 +53,7 @@
             id="isMainActivity"
             name="Activity是否是一个主页"
             type="boolean"
+            visibility="needActivity"
             default="false"
             help="Activity是否是一个主页 ？ 不勾选则不生成"/>
 
@@ -109,6 +112,7 @@
             id="isListActivity"
             name="Activity是否是一个列表"
             type="boolean"
+            visibility="needActivity"
             default="false"
             help="Activity是否是一个列表 ？ 是否需要生成 Adapter ? 不勾选则不生成。如果选择Generate Activity，会生成Activity，不选择Generate Activity，只会生产Adapter和Entity。"/>
 
@@ -116,6 +120,7 @@
             id="isTabActivity"
             name="Activity是否是一个Tab选项"
             type="boolean"
+            visibility="needActivity"
             default="false"
             help="Activity是否是一个Tab选项 ？ 不勾选则不生成"/>
 
@@ -123,6 +128,7 @@
             id="isScanActivity"
             name="Activity是否是一个扫描二维码页面"
             type="boolean"
+            visibility="needActivity"
             default="false"
             help="Activity是否是一个扫描二维码页面 ？ 不勾选则不生成"/>
 
@@ -226,6 +232,14 @@
             type="boolean"
             default="false"
             help="是否需要生成 Fragment ? 不勾选则不生成"/>
+
+    <parameter
+            id="isListFragment"
+            name="Fragment是否是一个列表"
+            type="boolean"
+            visibility="needFragment"
+            default="false"
+            help="Fragment是否是一个列表 ？ 是否需要生成 Adapter ? 不勾选则不生成。如果选择Generate Fragment，会生成Fragment，不选择Generate Fragment，只会生产Adapter和Entity。"/>
 
     <parameter
             id="fragmentLayoutName"

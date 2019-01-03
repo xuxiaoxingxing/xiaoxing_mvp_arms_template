@@ -23,7 +23,7 @@ import ${packageName}.R;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
-<#if isListActivity>
+<#if isListFragment>
     import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
     import com.scwang.smartrefresh.layout.api.RefreshLayout;
@@ -43,9 +43,9 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 </#if>
 
-public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}Contract.View <#if isListActivity>, OnRefreshListener</#if>{
+public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> implements ${pageName}Contract.View <#if isListFragment>, OnRefreshListener</#if>{
 
-    <#if isListActivity>
+    <#if isListFragment>
   
     private ${pageName}Adapter mAdapter;
 
@@ -88,7 +88,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
 
-        <#if isListActivity>
+        <#if isListFragment>
             initRefreshLayout();
             initRecyclerView();
             initEmpty();
@@ -107,7 +107,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
     mPresenter.get${pageName}Data();
     }
 
-    <#if isListActivity>
+    <#if isListFragment>
         private void initEmpty() {
             empty_image.setImageResource(R.drawable.ic_empty);
             empty_text.setTextColor(getResources().getColor(R.color.public_white));
