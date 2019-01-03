@@ -93,6 +93,18 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
             initRecyclerView();
             initEmpty();
         </#if>
+        get${pageName}Data();
+    }
+
+
+    @Override
+    public void get${pageName}DataSuccess(${pageName} entityData) {
+
+
+    }
+
+    private void get${pageName}Data() {
+    mPresenter.get${pageName}Data();
     }
 
     <#if isListActivity>
