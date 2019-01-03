@@ -130,6 +130,7 @@
             id="isGoogleDingWeiActivity"
             name="Activity是否是一个谷歌地图定位"
             type="boolean"
+            visibility="false"
             default="false"
             help="Activity是否是一个谷歌地图定位 ？ 不勾选则不生成"/>
 
@@ -137,6 +138,7 @@
             id="isGaoDeDingWeiActivity"
             name="Activity是否是一个高德地图定位"
             type="boolean"
+            visibility="false"
             default="false"
             help="Activity是否是一个高德地图定位 ？ 不勾选则不生成"/>
 

@@ -145,6 +145,19 @@
     <copy from="root/res/drawable-xxhdpi/scan_icon_scanline.png"
           to="${projectOut}/src/main/res/drawable-xxhdpi/scan_icon_scanline.png"></copy>
 </#if>
+<#if isTabActivity>
+
+    <instantiate from="root/src/app_package/ArmsActivityTopTab.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/res/layout/activity_top_tab.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+
+    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+
+</#if>
 
 <#if isGoogleDingWeiActivity>
     <copy from="root/res/xml/google_maps_api.xml" to="${projectOut}/src/debug/res/values/google_maps_api.xml"></copy>
