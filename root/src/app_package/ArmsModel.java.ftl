@@ -6,23 +6,32 @@ import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
 
 <#if needActivity && needFragment>
-import com.jess.arms.di.scope.ActivityScope;
+    import com.jess.arms.di.scope.ActivityScope;
 <#elseif needActivity>
-import com.jess.arms.di.scope.ActivityScope;
+    import com.jess.arms.di.scope.ActivityScope;
 <#elseif needFragment>
-import com.jess.arms.di.scope.FragmentScope;
+    import com.jess.arms.di.scope.FragmentScope;
 </#if>
+
 import javax.inject.Inject;
 
 import ${contractPackageName}.${pageName}Contract;
 
 
+<#if isListActivity>
+    import com.xiaoxing.maji.mvp.api.ApiService;
+    import ${packageName}.mvp.ui.entity.${pageName};
+    import io.reactivex.Observable;
+</#if>
+
+
+
 <#if needActivity && needFragment>
-@ActivityScope
+    @ActivityScope
 <#elseif needActivity>
-@ActivityScope
+    @ActivityScope
 <#elseif needFragment>
-@FragmentScope
+    @FragmentScope
 </#if>
 public class ${pageName}Model extends BaseModel implements ${pageName}Contract.Model{
     @Inject
@@ -34,6 +43,14 @@ public class ${pageName}Model extends BaseModel implements ${pageName}Contract.M
     public ${pageName}Model(IRepositoryManager repositoryManager) {
         super(repositoryManager);
     }
+
+    <#if isListActivity>
+        @Override
+        public Observable<${pageName}> get${pageName}List() {
+            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}List();
+
+        }
+    </#if>
 
     @Override
     public void onDestroy() {

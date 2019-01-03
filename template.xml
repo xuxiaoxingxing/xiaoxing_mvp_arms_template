@@ -9,7 +9,7 @@
 
     <category value="Activity"/>
     <formfactor value="Mobile"/>
-
+ 
     <parameter
             id="pageName"
             name="Page Name"

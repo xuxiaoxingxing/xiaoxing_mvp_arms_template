@@ -83,17 +83,17 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
     @Override
     public void setupActivityComponent(@NonNull AppComponent appComponent) {
-    Dagger${pageName}Component //如找不到该类,请编译一下项目
-    .builder()
-    .appComponent(appComponent)
-    .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}Module(this))
-    .build()
-    .inject(this);
+        Dagger${pageName}Component //如找不到该类,请编译一下项目
+        .builder()
+        .appComponent(appComponent)
+        .${extractLetters(pageName[0]?lower_case)}${pageName?substring(1,pageName?length)}Module(new ${pageName}Module(this))
+        .build()
+        .inject(this);
     }
 
     @Override
     public int initView(@Nullable Bundle savedInstanceState) {
-    return R.layout.${activityLayoutName}; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
+        return R.layout.${activityLayoutName}; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
 
     @Override
@@ -159,9 +159,28 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         @Override
         public void onRefresh(@NonNull RefreshLayout refreshLayout) {
 
+            get${pageName}List();
             mRefreshLayout.finishRefresh();
             mEmptyLayout.setVisibility(View.GONE);
 
+        }
+
+        @Override
+        public void get${pageName}Success(${pageName} entityList) {
+
+            if (entityList != null && entityList.getData() != null && entityList.getData().size() > 0) {
+                mDataBeanList.clear();
+                mDataBeanList.addAll(entityList.getData());
+                mAdapter.notifyDataSetChanged();
+                mEmptyLayout.setVisibility(View.GONE);
+            } else {
+                mEmptyLayout.setVisibility(View.VISIBLE);
+            }
+
+        }
+
+        private void get${pageName}List() {
+            mPresenter.get${pageName}List();
         }
 
     </#if>
@@ -181,18 +200,18 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
     @Override
     public void showMessage(@NonNull String message) {
-    checkNotNull(message);
-    ArmsUtils.snackbarText(message);
+        checkNotNull(message);
+        ArmsUtils.snackbarText(message);
     }
 
     @Override
     public void launchActivity(@NonNull Intent intent) {
-    checkNotNull(intent);
-    ArmsUtils.startActivity(intent);
+        checkNotNull(intent);
+        ArmsUtils.startActivity(intent);
     }
 
     @Override
     public void killMyself() {
-    finish();
+        finish();
     }
     }
