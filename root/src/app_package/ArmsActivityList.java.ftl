@@ -136,6 +136,8 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
         private void initRecyclerView() {
             mRecyclerView.setLayoutManager(new LinearLayoutManager(${pageName}Activity.this));
+            mRecyclerView.addItemDecoration(new RecycleViewDivider(this, LinearLayoutManager.VERTICAL, 10, Color.parseColor("#EEEEEE")));
+
             <#--mRecyclerView.addItemDecoration(new DividerItemDecoration(${pageName}Activity.this, VERTICAL));-->
             mRecyclerView.setItemAnimator(new DefaultItemAnimator());
             mRecyclerView.setAdapter(mAdapter = new ${pageName}Adapter(${pageName}Activity.this, mDataBeanList = loadModels()));
@@ -166,7 +168,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         }
 
         @Override
-        public void get${pageName}Success(${pageName} entityList) {
+        public void get${pageName}DataSuccess(${pageName} entityList) {
 
             if (entityList != null && entityList.getData() != null && entityList.getData().size() > 0) {
                 mDataBeanList.clear();

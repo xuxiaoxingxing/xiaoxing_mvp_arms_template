@@ -87,7 +87,7 @@ public class ${pageName}Presenter extends BasePresenter<${pageName}Contract.Mode
                     .subscribe(new ErrorHandleSubscriber<${pageName}>(mErrorHandler) {
                         @Override
                         public void onNext(${pageName} entityList) {
-                            mRootView.get${pageName}Success(entityList);
+                            mRootView.get${pageName}DataSuccess(entityList);
                         }
                     });
         }
