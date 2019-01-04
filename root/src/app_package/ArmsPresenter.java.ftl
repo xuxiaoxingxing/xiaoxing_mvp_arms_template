@@ -10,6 +10,7 @@ import com.jess.arms.integration.AppManager;
 <#elseif needFragment>
     import com.jess.arms.di.scope.FragmentScope;
 </#if>
+import com.jess.arms.utils.RxLifecycleUtils;
 import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;

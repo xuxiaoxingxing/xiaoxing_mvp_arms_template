@@ -161,7 +161,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         @Override
         public void onRefresh(@NonNull RefreshLayout refreshLayout) {
 
-            get${pageName}List();
+            //get${pageName}List();
             mRefreshLayout.finishRefresh();
             mEmptyLayout.setVisibility(View.GONE);
 
