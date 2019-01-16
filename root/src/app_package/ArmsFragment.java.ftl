@@ -93,7 +93,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
             initRecyclerView();
             initEmpty();
         </#if>
-        get${pageName}Data();
+        //get${pageName}Data();
     }
 
 

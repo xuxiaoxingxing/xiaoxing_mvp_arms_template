@@ -29,6 +29,8 @@
 <#if needFragment>
     <instantiate from="root/src/app_package/ArmsFragment.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
     <open file="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.java"></open>
 </#if>
 <#if isListFragment>

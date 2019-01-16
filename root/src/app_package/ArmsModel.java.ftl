@@ -19,17 +19,17 @@ import ${contractPackageName}.${pageName}Contract;
 
 
 <#if isListActivity>
-    import com.xiaoxing.maji.mvp.api.ApiService;
+    import ${packageName}.mvp.api.ApiService;
     import ${packageName}.mvp.ui.entity.${pageName};
     import io.reactivex.Observable;
 </#if>
 <#if isNormalActivity>
-    import com.xiaoxing.maji.mvp.api.ApiService;
+    import ${packageName}.mvp.api.ApiService;
     import ${packageName}.mvp.ui.entity.${pageName};
     import io.reactivex.Observable;
 </#if>
 <#if needFragment>
-    import com.xiaoxing.maji.mvp.api.ApiService;
+    import ${packageName}.mvp.api.ApiService;
     import ${packageName}.mvp.ui.entity.${pageName};
     import io.reactivex.Observable;
 </#if>
