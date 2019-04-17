@@ -15,6 +15,7 @@ import com.jess.arms.mvp.BasePresenter;
 import com.jess.arms.http.imageloader.ImageLoader;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import javax.inject.Inject;
+import java.util.Map;
 
 import ${contractPackageName}.${pageName}Contract;
 
@@ -73,9 +74,9 @@ public class ${pageName}Presenter extends BasePresenter<${pageName}Contract.Mode
     }
     <#if isListActivity>
 
-        public void get${pageName}List() {
+        public void get${pageName}List(Map<String, String> map) {
 
-            mModel.get${pageName}List().subscribeOn(Schedulers.io())
+            mModel.get${pageName}List(map).subscribeOn(Schedulers.io())
                     //                .retryWhen(new RetryWithDelay(3, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                     .doOnSubscribe(disposable -> {
                         mRootView.showLoading();
@@ -96,9 +97,9 @@ public class ${pageName}Presenter extends BasePresenter<${pageName}Contract.Mode
     </#if>
     <#if isNormalActivity>
 
-        public void get${pageName}Data() {
+        public void get${pageName}Data(Map<String, String> map) {
 
-            mModel.get${pageName}Data().subscribeOn(Schedulers.io())
+            mModel.get${pageName}Data(map).subscribeOn(Schedulers.io())
                     //                .retryWhen(new RetryWithDelay(3, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                     .doOnSubscribe(disposable -> {
                         mRootView.showLoading();
@@ -119,9 +120,9 @@ public class ${pageName}Presenter extends BasePresenter<${pageName}Contract.Mode
     </#if>
     <#if needFragment>
 
-        public void get${pageName}Data() {
+        public void get${pageName}Data(Map<String, String> map) {
 
-            mModel.get${pageName}Data().subscribeOn(Schedulers.io())
+            mModel.get${pageName}Data(map).subscribeOn(Schedulers.io())
                     //                .retryWhen(new RetryWithDelay(3, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
                     .doOnSubscribe(disposable -> {
                         mRootView.showLoading();

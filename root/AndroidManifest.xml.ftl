@@ -1,5 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.xiaoxing.aobeikeyouxue">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application>
             <activity

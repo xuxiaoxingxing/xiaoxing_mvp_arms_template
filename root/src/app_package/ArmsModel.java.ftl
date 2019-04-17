@@ -4,6 +4,7 @@ import android.app.Application;
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
+import java.util.Map;
 
 <#if needActivity && needFragment>
     import com.jess.arms.di.scope.ActivityScope;
@@ -56,22 +57,22 @@ public class ${pageName}Model extends BaseModel implements ${pageName}Contract.M
 
     <#if isListActivity>
         @Override
-        public Observable<${pageName}> get${pageName}List() {
-            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}List();
+        public Observable<${pageName}> get${pageName}List(Map<String, String> map) {
+            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}List(map);
 
         }
     </#if>
     <#if isNormalActivity>
         @Override
-        public Observable<${pageName}> get${pageName}Data() {
-            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data();
+        public Observable<${pageName}> get${pageName}Data(Map<String, String> map) {
+            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data(map);
 
         }
     </#if>
     <#if needFragment>
         @Override
-        public Observable<${pageName}> get${pageName}Data() {
-            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data();
+        public Observable<${pageName}> get${pageName}Data(Map<String, String> map) {
+            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data(map);
 
         }
     </#if>

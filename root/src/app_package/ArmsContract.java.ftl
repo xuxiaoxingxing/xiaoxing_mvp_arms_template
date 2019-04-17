@@ -2,6 +2,8 @@ package ${contractPackageName};
 
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
+import java.util.Map;
+
 <#if isListActivity>
 	import ${packageName}.mvp.ui.entity.${pageName};
 	import io.reactivex.Observable;
@@ -30,13 +32,13 @@ public interface ${pageName}Contract {
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel{
 		<#if isListActivity>
-			Observable<${pageName}> get${pageName}List();
+			Observable<${pageName}> get${pageName}List(Map<String, String> map);
 		</#if>
 		<#if isNormalActivity>
-			Observable<${pageName}> get${pageName}Data();
+			Observable<${pageName}> get${pageName}Data(Map<String, String> map);
 		</#if>
 		<#if needFragment>
-			Observable<${pageName}> get${pageName}Data();
+			Observable<${pageName}> get${pageName}Data(Map<String, String> map);
 		</#if>
     }
 }
