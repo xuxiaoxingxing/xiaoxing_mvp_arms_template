@@ -104,7 +104,8 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
     }
 
     private void get${pageName}Data() {
-    mPresenter.get${pageName}Data();
+    HashMap<String, String> map = new HashMap<>();
+    mPresenter.get${pageName}Data(map);
     }
 
     <#if isListFragment>
