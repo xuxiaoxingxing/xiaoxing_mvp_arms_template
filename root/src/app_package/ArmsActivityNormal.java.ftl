@@ -77,7 +77,9 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     }
 
     private void get${pageName}Data() {
-        mPresenter.get${pageName}Data();
+        HashMap<String, String> map = new HashMap<>();
+
+        mPresenter.get${pageName}Data(map);
     }
 
 

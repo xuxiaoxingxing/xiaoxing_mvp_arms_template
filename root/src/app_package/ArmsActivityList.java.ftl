@@ -182,7 +182,9 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         }
 
         private void get${pageName}List() {
-            mPresenter.get${pageName}List();
+            HashMap<String, String> map = new HashMap<>();
+
+            mPresenter.get${pageName}List(map);
         }
 
     </#if>
