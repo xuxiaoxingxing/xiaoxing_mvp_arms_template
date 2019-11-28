@@ -113,7 +113,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     @Override
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
-        ArmsUtils.snackbarText(message);
+        ArmsUtils.makeText(this, message);
     }
 
     @Override

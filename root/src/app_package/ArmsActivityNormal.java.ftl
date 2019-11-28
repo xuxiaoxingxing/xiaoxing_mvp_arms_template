@@ -67,7 +67,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     <#else>
         ToolbarUtils.initToolbarTitleBack(this, getString(R.string.${activityToLayout(pageName)}));
     </#if>
-        get${pageName}Data();
+        //get${pageName}Data();
     }
 
     @Override
@@ -96,7 +96,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     @Override
     public void showMessage(@NonNull String message) {
         checkNotNull(message);
-        ArmsUtils.snackbarText(message);
+        ArmsUtils.makeText(this, message);
     }
 
     @Override
