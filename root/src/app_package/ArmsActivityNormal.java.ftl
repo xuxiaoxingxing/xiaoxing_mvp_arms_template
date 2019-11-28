@@ -83,14 +83,15 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     }
 
 
+
     @Override
     public void showLoading() {
-
+        LoadingDialogUtil.showGifdialog2(getSupportFragmentManager(), R.drawable.public_loading);
     }
 
     @Override
     public void hideLoading() {
-
+        LoadingDialogUtil.dismissDialog();
     }
 
     @Override
