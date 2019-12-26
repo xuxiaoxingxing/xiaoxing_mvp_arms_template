@@ -31,7 +31,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
     <#if isScanActivity>
         private static final int REQUEST_CODE_CHOOSE_QRCODE_FROM_GALLERY = 666;
 
-        @BindView(R2.id.zxingview)
+        @BindView(R.id.zxingview)
         ZXingView mZXingView;
 
     </#if>
@@ -89,20 +89,46 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
         @Override
         public void onScanQRCodeSuccess(String result) {
-        Log.i(TAG, "result:" + result);
-        //        setTitle("扫描结果为：" + result);
-        if (!TextUtils.isEmpty(result)) {
+            Log.i(TAG, "result:" + result);
+            //        setTitle("扫描结果为：" + result);
 
-        } else {
-        ArmsUtils.snackbarText("二維碼錯誤");
+            vibrate();
+            mZXingView.startSpot(); // 延迟0.5秒后开始识别
+
+            if (!TextUtils.isEmpty(result)) {
+
+                // 设置返回数据
+                Bundle bundle = new Bundle();
+                bundle.putString("scan_result", result);
+                Intent intent = new Intent();
+                intent.putExtras(bundle);
+                // 返回intent
+                setResult(mSharedPreferencesHelper.getInt(SCAN_REQUEST_CODE), intent);
+                killMyself();
+
+            } else {
+                ArmsUtils.makeText(this, "二维码错误");
+            }
         }
-        vibrate();
-        mZXingView.startSpot(); // 延迟0.5秒后开始识别
+        @Override
+        public void onCameraAmbientBrightnessChanged(boolean isDark) {
+            String tipText = mZXingView.getScanBoxView().getTipText();
+            String ambientBrightnessTip = "\n环境过暗，请打开闪光灯";
+            if (isDark) {
+                if (!tipText.contains(ambientBrightnessTip)) {
+                    mZXingView.getScanBoxView().setTipText(tipText + ambientBrightnessTip);
+                }
+            } else {
+                if (tipText.contains(ambientBrightnessTip)) {
+                    tipText = tipText.substring(0, tipText.indexOf(ambientBrightnessTip));
+                    mZXingView.getScanBoxView().setTipText(tipText);
+                }
+            }
         }
 
         @Override
         public void onScanQRCodeOpenCameraError() {
-        Log.e(TAG, "打开相机出错");
+            Log.e(TAG, "打开相机出错");
         }
 
 
