@@ -17,7 +17,7 @@ import ${presenterPackageName}.${pageName}Presenter;
 import ${packageName}.R;
 
 import me.jessyan.armscomponent.commonres.utils.ToolbarUtils;
-
+import me.jessyan.armscomponent.commonres.utils.CProgressDialogUtils;
 import me.jessyan.armscomponent.commonsdk.core.RouterHub;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
@@ -86,12 +86,12 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
     @Override
     public void showLoading() {
-        LoadingDialogUtil.showGifdialog2(getSupportFragmentManager(), R.drawable.public_loading);
+        CProgressDialogUtils.showProgressDialog(this);
     }
 
     @Override
     public void hideLoading() {
-        LoadingDialogUtil.dismissDialog();
+        CProgressDialogUtils.cancelProgressDialog(this);
     }
 
     @Override
