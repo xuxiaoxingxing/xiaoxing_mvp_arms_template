@@ -12,6 +12,10 @@ import java.util.Map;
 	import ${packageName}.mvp.ui.entity.${pageName};
 	import io.reactivex.Observable;
 </#if>
+<#if isGoogleDingWeiActivity>
+	import ${packageName}.mvp.ui.entity.${pageName}Entity;
+	import io.reactivex.Observable;
+</#if>
 <#if isStartActivity>
 	import ${packageName}.mvp.ui.entity.${pageName};
 	import io.reactivex.Observable;
@@ -29,6 +33,9 @@ public interface ${pageName}Contract {
 		<#if isNormalActivity>
 			void get${pageName}DataSuccess(${pageName} entityData);
 		</#if>
+		<#if isGoogleDingWeiActivity>
+			void get${pageName}DataSuccess(${pageName}Entity entityData);
+		</#if>
 		<#if isStartActivity>
 			void get${pageName}DataSuccess(${pageName} entityData);
 		</#if>
@@ -43,6 +50,9 @@ public interface ${pageName}Contract {
 		</#if>
 		<#if isNormalActivity>
 			Observable<${pageName}> get${pageName}Data(Map<String, String> map);
+		</#if>
+		<#if isGoogleDingWeiActivity>
+			Observable<${pageName}Entity> get${pageName}Data(Map<String, String> map);
 		</#if>
 		<#if isStartActivity>
 			Observable<${pageName}> get${pageName}Data(Map<String, String> map);

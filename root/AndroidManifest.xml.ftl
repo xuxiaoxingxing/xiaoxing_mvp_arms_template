@@ -4,7 +4,6 @@
             <activity
             android:name="${ativityPackageName}.${activityClass}"
             android:configChanges="orientation|screenSize"
-            tools:ignore="LockedOrientationActivity"
             android:screenOrientation="portrait" />
 
             <#if isGoogleDingWeiActivity>
@@ -13,7 +12,7 @@
 	            android:value="@string/google_maps_key" />
 
 		        <service
-		            android:name="${ativityPackageName}.mvp.ui.service.FetchAddressIntentService"
+		            android:name="${servicePackageName}.FetchAddressIntentService"
 		            android:exported="false" />
             </#if>
 

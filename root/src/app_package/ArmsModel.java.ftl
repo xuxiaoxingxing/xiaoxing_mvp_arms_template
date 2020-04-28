@@ -29,6 +29,11 @@ import ${contractPackageName}.${pageName}Contract;
     import ${packageName}.mvp.ui.entity.${pageName};
     import io.reactivex.Observable;
 </#if>
+<#if isGoogleDingWeiActivity>
+    import ${packageName}.mvp.api.ApiService;
+    import ${packageName}.mvp.ui.entity.${pageName}Entity;
+    import io.reactivex.Observable;
+</#if>
 <#if isStartActivity>
     import ${packageName}.mvp.api.ApiService;
     import ${packageName}.mvp.ui.entity.${pageName};
@@ -70,6 +75,13 @@ public class ${pageName}Model extends BaseModel implements ${pageName}Contract.M
     <#if isNormalActivity>
         @Override
         public Observable<${pageName}> get${pageName}Data(Map<String, String> map) {
+            return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data(map);
+
+        }
+    </#if>    
+     <#if isGoogleDingWeiActivity>
+        @Override
+        public Observable<${pageName}Entity> get${pageName}Data(Map<String, String> map) {
             return mRepositoryManager.obtainRetrofitService(ApiService.class).get${pageName}Data(map);
 
         }

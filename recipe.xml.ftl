@@ -172,8 +172,25 @@
 </#if>
 
 <#if isGoogleDingWeiActivity>
+
+    <instantiate from="root/src/app_package/ArmsActivityGoogleDingWei.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/src/app_package/FetchAddressIntentService.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(servicePackageName)}/service/FetchAddressIntentService.java"></instantiate>
+    <instantiate from="root/res/layout/activity_google_ding_wei.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+    <instantiate from="root/src/app_package/ArmsLocationEntity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}Entity.java"></instantiate>
+
+    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
     <copy from="root/res/xml/google_maps_api.xml" to="${projectOut}/src/debug/res/values/google_maps_api.xml"></copy>
     <copy from="root/res/xml/google_maps_api.xml" to="${projectOut}/src/release/res/values/google_maps_api.xml"></copy>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+    <open file="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.java"></open>
+
 
 </#if>
 

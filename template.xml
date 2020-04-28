@@ -56,7 +56,7 @@
             visibility="needActivity"
             default="false"
             help="Activity是否是一个主页 ？ 不勾选则不生成"/>
-            
+
     <parameter
             id="isStartActivity"
             name="Activity是否是一个启动页"
@@ -143,7 +143,7 @@
             id="isGoogleDingWeiActivity"
             name="Activity是否是一个谷歌地图定位"
             type="boolean"
-            visibility="false"
+            visibility="true"
             default="false"
             help="Activity是否是一个谷歌地图定位 ？ 不勾选则不生成"/>
 
@@ -200,6 +200,15 @@
             constraints="package"
             suggest="${packageName}.mvp.ui.activity"
             visibility="needActivity"
+            help="Activity 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
+    />
+    <parameter
+            id="servicePackageName"
+            name="Service Package Name"
+            type="string"
+            constraints="package"
+            suggest="${packageName}.mvp.ui.service"
+            visibility="isGoogleDingWeiActivity"
             help="Activity 将被输出到此包下,请认真核实此包名是否是你需要输出的目标包名"
     />
 
