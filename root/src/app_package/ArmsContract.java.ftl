@@ -12,6 +12,10 @@ import java.util.Map;
 	import ${packageName}.mvp.ui.entity.${pageName};
 	import io.reactivex.Observable;
 </#if>
+<#if isStartActivity>
+	import ${packageName}.mvp.ui.entity.${pageName};
+	import io.reactivex.Observable;
+</#if>
 <#if needFragment>
 	import ${packageName}.mvp.ui.entity.${pageName};
 	import io.reactivex.Observable;
@@ -25,6 +29,9 @@ public interface ${pageName}Contract {
 		<#if isNormalActivity>
 			void get${pageName}DataSuccess(${pageName} entityData);
 		</#if>
+		<#if isStartActivity>
+			void get${pageName}DataSuccess(${pageName} entityData);
+		</#if>
 		<#if needFragment>
 			void get${pageName}DataSuccess(${pageName} entityData);
 		</#if>
@@ -35,6 +42,9 @@ public interface ${pageName}Contract {
 			Observable<${pageName}> get${pageName}List(Map<String, String> map);
 		</#if>
 		<#if isNormalActivity>
+			Observable<${pageName}> get${pageName}Data(Map<String, String> map);
+		</#if>
+		<#if isStartActivity>
 			Observable<${pageName}> get${pageName}Data(Map<String, String> map);
 		</#if>
 		<#if needFragment>

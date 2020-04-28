@@ -56,7 +56,14 @@
             visibility="needActivity"
             default="false"
             help="Activity是否是一个主页 ？ 不勾选则不生成"/>
-
+            
+    <parameter
+            id="isStartActivity"
+            name="Activity是否是一个启动页"
+            type="boolean"
+            visibility="needActivity"
+            default="false"
+            help="Activity是否是一个启动页 ? 不勾选则不生成"/>
 
     <!--<parameter-->
             <!--id="fragmentTab1"-->

@@ -4,6 +4,7 @@
             <activity
             android:name="${ativityPackageName}.${activityClass}"
             android:configChanges="orientation|screenSize"
+            tools:ignore="LockedOrientationActivity"
             android:screenOrientation="portrait" />
 
             <#if isGoogleDingWeiActivity>

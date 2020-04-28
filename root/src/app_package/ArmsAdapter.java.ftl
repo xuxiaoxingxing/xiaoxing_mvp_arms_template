@@ -5,7 +5,7 @@ import android.content.Context;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import ${packageName}.mvp.ui.entity.${pageName};
-import me.jessyan.armscomponent.commonres.utils.GlideUtil;
+//import me.jessyan.armscomponent.commonres.utils.GlideUtil;
 
 import java.util.List;
 

@@ -177,4 +177,24 @@
 
 </#if>
 
+<#if isStartActivity>
+
+    <instantiate from="root/src/app_package/ArmsActivityStart.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/res/layout/activity_start.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+   <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
+
+    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
+  
+    <merge from="root/res/values/styles.xml.ftl" to="${projectOut}/src/main/res/values/styles.xml"></merge>
+    <copy from="root/res/drawable-xxhdpi/guide_img.png" to="${projectOut}/src/main/res/drawable-xxhdpi/guide_img.png"></copy>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+    <open file="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.java"></open>
+</#if>
+
 </recipe>
