@@ -110,6 +110,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         initRefreshLayout();
         initRecyclerView();
         initEmpty();
+        //get${pageName}List();
     </#if>
 
     }
@@ -119,7 +120,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
         private void initEmpty() {
             empty_image.setImageResource(R.drawable.ic_empty);
             empty_text.setTextColor(getResources().getColor(R.color.public_white));
-            empty_text.setText("暫無數據下拉刷新");
+            empty_text.setText("暫無數據");
         }
 
         private List<${pageName}.DataBean> loadModels() {
@@ -154,6 +155,7 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
             mRefreshLayout.setRefreshHeader(new
         ClassicsHeader(this).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
             mRefreshLayout.setOnRefreshListener(this);
+            mRefreshLayout.setEnableRefresh(false);
             mRefreshLayout.autoRefresh();
             mRefreshLayout.setEnableLoadMore(false);
         }
@@ -175,8 +177,10 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
                 mDataBeanList.addAll(entityList.getData());
                 mAdapter.notifyDataSetChanged();
                 mEmptyLayout.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
             } else {
                 mEmptyLayout.setVisibility(View.VISIBLE);
+                mRecyclerView.setVisibility(View.GONE);
             }
 
         }
@@ -194,12 +198,12 @@ public class ${pageName}Activity extends BaseActivity<${pageName}Presenter> impl
 
     @Override
     public void showLoading() {
-
+        CProgressDialogUtils.showProgressDialog(this);
     }
 
     @Override
     public void hideLoading() {
-
+        CProgressDialogUtils.cancelProgressDialog(this);
     }
 
     @Override

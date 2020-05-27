@@ -76,6 +76,8 @@
     <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
 
     <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+    <open file="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.java"></open>
+
 
 </#if>
 <#if isListActivity>
