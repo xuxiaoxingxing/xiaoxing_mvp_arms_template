@@ -98,9 +98,20 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
 
 
     @Override
-    public void get${pageName}DataSuccess(${pageName} entityData) {
+    public void get${pageName}DataSuccess(${pageName} entityList) {
+        <#if isListFragment>
+            if (entityList != null && entityList.getData() != null && entityList.getData().size() > 0) {
+                    mDataBeanList.clear();
+                    mDataBeanList.addAll(entityList.getData());
+                    mAdapter.notifyDataSetChanged();
+                    mEmptyLayout.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                } else {
+                    mEmptyLayout.setVisibility(View.VISIBLE);
+                    mRecyclerView.setVisibility(View.GONE);
 
-
+                }
+         </#if>
     }
 
     private void get${pageName}Data() {
@@ -112,7 +123,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
         private void initEmpty() {
             empty_image.setImageResource(R.drawable.ic_empty);
             empty_text.setTextColor(getResources().getColor(R.color.public_white));
-            empty_text.setText("暫無數據下拉刷新");
+            empty_text.setText("暫無數據");
         }
 
         private void initRecyclerView() {
