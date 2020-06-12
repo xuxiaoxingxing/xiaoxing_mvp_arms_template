@@ -49,16 +49,16 @@ public class ${pageName}Fragment extends BaseFragment<${pageName}Presenter> impl
   
     private ${pageName}Adapter mAdapter;
 
-    @BindView(R2.id.empty_text)
+    @BindView(R.id.empty_text)
     TextView empty_text;
-    @BindView(R2.id.empty_image)
+    @BindView(R.id.empty_image)
     ImageView empty_image;
 
-    @BindView(R2.id.empty)
+    @BindView(R.id.empty)
     View mEmptyLayout;
-    @BindView(R2.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    @BindView(R2.id.refreshLayout)
+    @BindView(R.id.refreshLayout)
     RefreshLayout mRefreshLayout;
     private static boolean mIsNeedDemo = true;
     private List<${pageName}.DataBean> mDataBeanList = new ArrayList<>();
@@ -93,7 +93,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
             initRecyclerView();
             initEmpty();
         </#if>
-        //get${pageName}Data();
+        get${pageName}Data();
     }
 
 
@@ -121,7 +121,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
 
     <#if isListFragment>
         private void initEmpty() {
-            empty_image.setImageResource(R.drawable.ic_empty);
+            empty_image.setImageResource(R.drawable.default_img);
             empty_text.setTextColor(getResources().getColor(R.color.public_white));
             empty_text.setText("暫無數據");
         }
@@ -135,7 +135,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
             mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                    Utils.navigation(getActivity(), RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
+                    //Utils.navigation(getActivity(), RouterHub.SALES_CLIENT_ZUI_XIN_XIAO_XI_XIANG_QING_ACTIVITY);
                 }
             });
         }
@@ -144,6 +144,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
             mRefreshLayout.setRefreshHeader(new
         ClassicsHeader(getActivity()).setSpinnerStyle(SpinnerStyle.FixedBehind).setPrimaryColorId(R.color.public_colorPrimary).setAccentColorId(android.R.color.white));
             mRefreshLayout.setOnRefreshListener(this);
+            mRefreshLayout.setEnableRefresh(false);
             mRefreshLayout.autoRefresh();
             mRefreshLayout.setEnableLoadMore(false);
         }

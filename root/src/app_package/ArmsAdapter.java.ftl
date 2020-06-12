@@ -24,6 +24,7 @@ public class ${pageName}Adapter extends BaseQuickAdapter<${pageName}.DataBean, B
     @Override
     protected void convert(BaseViewHolder helper, ${pageName}.DataBean item) {
         //GlideUtil.loadImage(mContext,item.getImg(),helper.getView(R.id.img_head));
+        //helper.setText(R.id.tv_dian_jia, item.getType_name());
     }
 
 }
