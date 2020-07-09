@@ -32,6 +32,8 @@
     <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
     <open file="${projectOut}/src/main/java/${slashedPackageName(fragmentPackageName)}/${pageName}Fragment.java"></open>
+    <open file="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.java"></open>
+
 </#if>
 <#if isListFragment>
     <instantiate from="root/src/app_package/ArmsAdapter.java.ftl"
