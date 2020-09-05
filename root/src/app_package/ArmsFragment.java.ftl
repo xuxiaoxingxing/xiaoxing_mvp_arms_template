@@ -122,7 +122,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
     <#if isListFragment>
         private void initEmpty() {
             empty_image.setImageResource(R.drawable.default_img);
-            empty_text.setTextColor(getResources().getColor(R.color.public_white));
+            empty_text.setTextColor(Color.parseColor("#D8D8D8"));
             empty_text.setText("暫無數據");
         }
 
@@ -215,7 +215,7 @@ ${pageName}Fragment fragment = new ${pageName}Fragment();
     @Override
     public void showMessage(@NonNull String message) {
     checkNotNull(message);
-    ArmsUtils.snackbarText(message);
+    ArmsUtils.makeText(getActivity(), message);
     }
 
     @Override
