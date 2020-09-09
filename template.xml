@@ -122,6 +122,14 @@
             visibility="needActivity"
             default="false"
             help="Activity是否是一个列表 ？ 是否需要生成 Adapter ? 不勾选则不生成。如果选择Generate Activity，会生成Activity，不选择Generate Activity，只会生产Adapter和Entity。"/>
+    
+    <parameter
+            id="isDrawerLayoutActivity"
+            name="Activity是否是一个DrawerLayout Activity"
+            type="boolean"
+            visibility="needActivity"
+            default="false"
+            help="Activity是否是一个DrawerLayout Activity ? 不勾选则不生成"/>
 
     <parameter
             id="isTabActivity"

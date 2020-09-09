@@ -107,7 +107,32 @@
     <open file="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.java"></open>
 
 </#if>
+<#if isDrawerLayoutActivity>
+    <instantiate from="root/src/app_package/ArmsActivityDrawerLayout.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>
+    <instantiate from="root/src/app_package/ArmsAdapterEntity.java.ftl"
+                 to="${projectOut}/src/main/java/${slashedPackageName(adapterEntityName)}/${pageName}.java"></instantiate>
+    <instantiate from="root/res/layout/drawer_layout_activity_main.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/${activityLayoutName}.xml"></instantiate>
+    <instantiate from="root/res/layout/drawer_layout_app_bar_main.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/drawer_layout_app_bar_main.xml"></instantiate>
+    <instantiate from="root/res/layout/drawer_layout_content_main.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/drawer_layout_content_main.xml"></instantiate>
+    <instantiate from="root/res/layout/drawer_layout_nav_header_main.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/layout/drawer_layout_nav_header_main.xml"></instantiate>
+    <instantiate from="root/res/menu/drawer_layout_activity_main_drawer.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/menu/drawer_layout_activity_main_drawer.xml"></instantiate>
+    <instantiate from="root/res/values/drawer_layout_drawables.xml.ftl"
+                 to="${escapeXmlAttribute(resOut)}/values/drawer_layout_drawables.xml"></instantiate>
 
+
+    <merge from="root/res/values/strings.xml.ftl" to="${projectOut}/src/main/res/values/strings.xml"></merge>
+    <merge from="root/AndroidManifest.xml.ftl" to="app/src/main/AndroidManifest.xml"></merge>
+
+    <open file="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></open>
+    <open file="${projectOut}/src/main/java/${slashedPackageName(modelPackageName)}/${pageName}Model.java"></open>
+
+</#if>
 <#if isMainActivity>
     <instantiate from="root/src/app_package/ArmsActivityMain.java.ftl"
                  to="${projectOut}/src/main/java/${slashedPackageName(ativityPackageName)}/${pageName}Activity.java"></instantiate>

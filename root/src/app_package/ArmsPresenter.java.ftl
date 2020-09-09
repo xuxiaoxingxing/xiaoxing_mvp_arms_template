@@ -39,6 +39,15 @@ import ${contractPackageName}.${pageName}Contract;
     import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
 </#if>
+<#if isDrawerLayoutActivity>
+
+    import ${packageName}.mvp.ui.entity.${pageName};
+    import io.reactivex.android.schedulers.AndroidSchedulers;
+    import io.reactivex.schedulers.Schedulers;
+    import me.jessyan.rxerrorhandler.core.RxErrorHandler;
+    import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
+
+</#if>
 <#if isGoogleDingWeiActivity>
 
     import ${packageName}.mvp.ui.entity.${pageName}Entity;
@@ -114,6 +123,29 @@ public class ${pageName}Presenter extends BasePresenter<${pageName}Contract.Mode
 
     </#if>
     <#if isNormalActivity>
+
+        public void get${pageName}Data(Map<String, String> map) {
+
+            mModel.get${pageName}Data(map).subscribeOn(Schedulers.io())
+                    //                .retryWhen(new RetryWithDelay(3, 2))//遇到错误时重试,第一个参数为重试几次,第二个参数为重试的间隔
+                    .doOnSubscribe(disposable -> {
+                        mRootView.showLoading();
+                    }).subscribeOn(AndroidSchedulers.mainThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doFinally(() -> {
+                        mRootView.hideLoading();
+                    })
+                    .compose(RxLifecycleUtils.bindToLifecycle(mRootView))//使用 Rxlifecycle,使 Disposable 和 Activity 一起销毁
+                    .subscribe(new ErrorHandleSubscriber<${pageName}>(mErrorHandler) {
+                        @Override
+                        public void onNext(${pageName} entityData) {
+                            mRootView.get${pageName}DataSuccess(entityData);
+                        }
+                    });
+        }
+
+    </#if> 
+    <#if isDrawerLayoutActivity>
 
         public void get${pageName}Data(Map<String, String> map) {
 
